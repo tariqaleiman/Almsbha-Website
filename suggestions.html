@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="pageTitle">تقديم المقترحات - تطبيق المسبحة</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Light Theme Variables */
+            --primary: #B24C33;
+            --primary-light: #E77A5D;
+            --primary-dark: #8C3A25;
+            --background: #F8F9FA;
+            --background-alt: #F3F4F6;
+            --surface: #FFFFFF;
+            --text-primary: #111827;
+            --text-secondary: #4B5563;
+            --border: #E5E7EB;
+            --shadow: rgba(0, 0, 0, 0.05);
+            --header-text: #FFFFFF;
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --input-bg: #F9FAFB;
+            --font-ar: 'Cairo', sans-serif;
+            --font-en: 'Inter', sans-serif;
+        }
+
+        [data-theme="dark"] {
+            /* Dark Theme Variables */
+            --primary: #E77A5D;
+            --primary-light: #FF9B82;
+            --primary-dark: #B24C33;
+            --background: #121212;
+            --background-alt: #1A1A1A;
+            --surface: #1E1E1E;
+            --text-primary: #F3F4F6;
+            --text-secondary: #9CA3AF;
+            --border: #374151;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --header-text: #FFFFFF;
+            --glass-bg: rgba(30, 30, 30, 0.9);
+            --input-bg: #121212;
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            font-family: var(--font-ar);
+            background-color: var(--background);
+            color: var(--text-primary);
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        body[dir="ltr"] {
+            font-family: var(--font-en);
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 75px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            z-index: 1000;
+            box-shadow: 0 4px 6px -1px var(--shadow);
+        }
+
+        .brand {
+            font-weight: 800;
+            font-size: 1.6rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+        }
+
+        .icon-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.2s ease;
+        }
+
+        .icon-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: var(--header-text);
+            padding: 140px 20px 80px;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            margin-top: 15px;
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.2rem;
+            font-weight: 600;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Main Content Container */
+        .container {
+            max-width: 700px;
+            margin: -40px auto 80px;
+            background: var(--surface);
+            padding: 50px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px var(--shadow);
+            position: relative;
+            z-index: 10;
+            width: 90%;
+            flex-grow: 1;
+        }
+
+        /* Form */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        label {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        input[type="text"], input[type="email"], select, textarea {
+            font-family: inherit;
+            padding: 14px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-size: 1rem;
+            background-color: var(--input-bg);
+            color: var(--text-primary);
+            transition: all 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(178, 76, 51, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .btn-submit {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(178, 76, 51, 0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--surface);
+            padding: 60px 20px 30px;
+            border-top: 1px solid var(--border);
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-brand .brand {
+            margin-bottom: 15px;
+        }
+
+        .footer-brand p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .footer-links-group h4 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .footer-links-group ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links-group ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links-group ul a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .footer-links-group ul a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 120px 20px 60px;
+            }
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            .container {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="brand">
+            <img src="assets/images/logo.png" alt="Logo" style="width: 35px; height: 35px; object-fit: contain;">
+            <span data-i18n="appName">المسبحة</span>
+        </a>
+        <div class="controls">
+            <button class="icon-btn" id="themeToggle" title="Toggle Theme">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <button class="icon-btn" id="langToggle" title="Change Language">
+                <i class="fa-solid fa-globe"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <h1 data-i18n="headerTitle">تقديم المقترحات</h1>
+        <p data-i18n="headerDesc">شاركنا أفكارك لتطوير التطبيق وجعله أفضل. رأيك يهمنا جداً.</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        
+        <h2 class="form-title" data-i18n="formTitle">أرسل اقتراحك</h2>
+        
+        <form action="mailto:tariqaleiman@gmail.com" method="post" enctype="text/plain">
+            <div class="input-group">
+                <label for="name" data-i18n="labelName">الاسم (اختياري)</label>
+                <input type="text" id="name" name="Name" data-i18n-ph="phName" placeholder="أدخل اسمك...">
+            </div>
+
+            <div class="input-group">
+                <label for="type" data-i18n="labelType">نوع الاقتراح</label>
+                <select id="type" name="SuggestionType">
+                    <option value="New Feature" data-i18n="optFeature">ميزة جديدة</option>
+                    <option value="Improvement" data-i18n="optImprovement">تحسين تجربة المستخدم</option>
+                    <option value="Bug Report" data-i18n="optBug">الإبلاغ عن مشكلة</option>
+                    <option value="Other" data-i18n="optOther">أخرى</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="message" data-i18n="labelMessage">تفاصيل الاقتراح</label>
+                <textarea id="message" name="SuggestionDetails" data-i18n-ph="phMessage" placeholder="اشرح اقتراحك أو فكرتك بالتفصيل..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">
+                <i class="fa-solid fa-lightbulb"></i> <span data-i18n="btnSend">إرسال الاقتراح</span>
+            </button>
+        </form>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="brand" style="justify-content: flex-start;">
+                    <img src="assets/images/logo.png" alt="Logo" style="width: 40px; height: 40px; object-fit: contain;">
+                    <span data-i18n="appName">المسبحة</span>
+                </a>
+                <p data-i18n="footerBrandDesc">رفيقك الدائم لذكر الله. تطبيق إسلامي شامل يهدف لمساعدتك على الحفاظ على أورادك وأذكارك بطريقة عصرية وذكية.</p>
+            </div>
+            
+            <div class="footer-links-group">
+                <h4 data-i18n="footerLinksTitle">روابط هامة</h4>
+                <ul>
+                    <li><a href="privacy-policy.html" data-i18n="footerPrivacy">سياسة الخصوصية</a></li>
+                    <li><a href="delete-account.html" data-i18n="footerDelete">طلب حذف الحساب</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-group">
+                <h4 data-i18n="footerContactTitle">تواصل معنا</h4>
+                <ul>
+                    <li><a href="contact.html" data-i18n="footerContact">اتصل بنا</a></li>
+                    <li><a href="suggestions.html" data-i18n="footerSuggestions">تقديم المقترحات</a></li>
+                    <li><a href="contact.html" style="color: var(--primary); font-weight: 700; direction: ltr; display: inline-block;">tariqaleiman@gmail.com</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p class="copyright" data-i18n="footerCopy">جميع الحقوق محفوظة &copy; 2026 تطبيق المسبحة</p>
+        </div>
+    </footer>
+
+    <!-- Translations & Logic -->
+    <script>
+        const translations = {
+            ar: {
+                pageTitle: "تقديم المقترحات - تطبيق المسبحة",
+                appName: "المسبحة",
+                headerTitle: "تقديم المقترحات",
+                headerDesc: "شاركنا أفكارك لتطوير التطبيق وجعله أفضل. رأيك يهمنا جداً.",
+                
+                formTitle: "أرسل اقتراحك",
+                labelName: "الاسم (اختياري)",
+                phName: "أدخل اسمك...",
+                labelType: "نوع الاقتراح",
+                optFeature: "ميزة جديدة",
+                optImprovement: "تحسين تجربة المستخدم",
+                optBug: "الإبلاغ عن مشكلة",
+                optOther: "أخرى",
+                labelMessage: "تفاصيل الاقتراح",
+                phMessage: "اشرح اقتراحك أو فكرتك بالتفصيل...",
+                btnSend: "إرسال الاقتراح",
+
+                footerBrandDesc: "رفيقك الدائم لذكر الله. تطبيق إسلامي شامل يهدف لمساعدتك على الحفاظ على أورادك وأذكارك بطريقة عصرية وذكية.",
+                footerLinksTitle: "روابط هامة",
+                footerPrivacy: "سياسة الخصوصية",
+                footerDelete: "طلب حذف الحساب",
+                footerContactTitle: "تواصل معنا",
+                footerContact: "اتصل بنا",
+                footerSuggestions: "تقديم المقترحات",
+                footerCopy: "جميع الحقوق محفوظة &copy; 2026 تطبيق المسبحة"
+            },
+            en: {
+                pageTitle: "Submit Suggestions - Almsbha App",
+                appName: "Almsbha",
+                headerTitle: "Submit Suggestions",
+                headerDesc: "Share your ideas to improve the app. Your opinion matters to us.",
+                
+                formTitle: "Send Your Suggestion",
+                labelName: "Name (Optional)",
+                phName: "Enter your name...",
+                labelType: "Suggestion Type",
+                optFeature: "New Feature",
+                optImprovement: "UX Improvement",
+                optBug: "Bug Report",
+                optOther: "Other",
+                labelMessage: "Suggestion Details",
+                phMessage: "Explain your suggestion or idea in detail...",
+                btnSend: "Submit Suggestion",
+
+                footerBrandDesc: "Your daily companion for remembering Allah. A comprehensive Islamic app designed to help you maintain your Awrad in a modern, smart way.",
+                footerLinksTitle: "Important Links",
+                footerPrivacy: "Privacy Policy",
+                footerDelete: "Request Account Deletion",
+                footerContactTitle: "Contact Us",
+                footerContact: "Contact Us",
+                footerSuggestions: "Submit Suggestions",
+                footerCopy: "All rights reserved &copy; 2026 Almsbha App"
+            }
+        };
+
+        let currentLang = 'ar';
+        let currentTheme = 'light';
+
+        function init() {
+            const sysLang = navigator.language.slice(0, 2);
+            if (sysLang === 'ar' || sysLang === 'en') {
+                currentLang = sysLang;
+            } else {
+                currentLang = 'en';
+            }
+            
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                currentTheme = 'dark';
+            }
+
+            const savedLang = localStorage.getItem('almsbha_lang');
+            if (savedLang) currentLang = savedLang;
+            
+            const savedTheme = localStorage.getItem('almsbha_theme');
+            if (savedTheme) currentTheme = savedTheme;
+
+            applyLanguage(currentLang);
+            applyTheme(currentTheme);
+
+            document.getElementById('langToggle').addEventListener('click', () => {
+                currentLang = currentLang === 'ar' ? 'en' : 'ar';
+                localStorage.setItem('almsbha_lang', currentLang);
+                applyLanguage(currentLang);
+            });
+
+            document.getElementById('themeToggle').addEventListener('click', () => {
+                currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+                localStorage.setItem('almsbha_theme', currentTheme);
+                applyTheme(currentTheme);
+            });
+        }
+
+        function applyLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    if (el.tagName === 'TITLE') {
+                        document.title = translations[lang][key];
+                    } else if (el.tagName === 'OPTION') {
+                        el.innerHTML = translations[lang][key];
+                    } else {
+                        el.innerHTML = translations[lang][key];
+                    }
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+                const key = el.getAttribute('data-i18n-ph');
+                if (translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
+                }
+            });
+
+            const langBtn = document.getElementById('langToggle');
+            langBtn.innerHTML = lang === 'ar' ? '<span style="font-size: 1rem; font-weight: bold;">EN</span>' : '<span style="font-size: 1rem; font-weight: bold;">ع</span>';
+        }
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            const themeBtn = document.getElementById('themeToggle');
+            themeBtn.innerHTML = theme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="pageTitle">طلب حذف الحساب - تطبيق المسبحة</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Light Theme Variables */
+            --primary: #B24C33;
+            --primary-light: #E77A5D;
+            --primary-dark: #8C3A25;
+            --error: #D32F2F;
+            --error-light: #FFEBEE;
+            --success: #2E7D32;
+            --success-light: #E8F5E9;
+            --background: #F8F9FA;
+            --surface: #FFFFFF;
+            --text-primary: #1A1A1A;
+            --text-secondary: #4A4A4A;
+            --border: #E5E7EB;
+            --input-bg: #F9FAFB;
+            --shadow: rgba(0, 0, 0, 0.05);
+            --header-text: #FFFFFF;
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --font-ar: 'Cairo', sans-serif;
+            --font-en: 'Inter', sans-serif;
+        }
+
+        [data-theme="dark"] {
+            /* Dark Theme Variables */
+            --primary: #E77A5D;
+            --primary-light: #FF9B82;
+            --primary-dark: #B24C33;
+            --error: #EF5350;
+            --error-light: rgba(239, 83, 80, 0.1);
+            --success: #81C784;
+            --success-light: rgba(129, 199, 132, 0.1);
+            --background: #121212;
+            --surface: #1E1E1E;
+            --text-primary: #F3F4F6;
+            --text-secondary: #9CA3AF;
+            --border: #374151;
+            --input-bg: #2A2A2A;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --header-text: #FFFFFF;
+            --glass-bg: rgba(30, 30, 30, 0.9);
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            font-family: var(--font-ar);
+            background-color: var(--background);
+            color: var(--text-primary);
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        body[dir="ltr"] {
+            font-family: var(--font-en);
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            z-index: 1000;
+        }
+
+        .brand {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+        }
+
+        .icon-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.2s ease;
+        }
+
+        .icon-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: var(--header-text);
+            padding: 120px 20px 80px;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        /* Main Content Container */
+        .container {
+            max-width: 650px;
+            margin: -40px auto 60px;
+            background: var(--surface);
+            padding: 50px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px var(--shadow);
+            position: relative;
+            z-index: 10;
+            width: 90%;
+            flex-grow: 1;
+        }
+
+        .warning-box {
+            background-color: var(--error-light);
+            border-inline-start: 4px solid var(--error);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 35px;
+            color: var(--error);
+        }
+
+        .warning-box strong {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+
+        .warning-box p {
+            margin: 0;
+            color: var(--text-primary);
+            opacity: 0.9;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        label {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 1.05rem;
+        }
+
+        input[type="email"], textarea {
+            font-family: inherit;
+            padding: 16px;
+            border: 1.5px solid var(--border);
+            border-radius: 12px;
+            font-size: 1.05rem;
+            background-color: var(--input-bg);
+            color: var(--text-primary);
+            transition: all 0.3s;
+        }
+
+        input[type="email"]:focus, textarea:focus {
+            outline: none;
+            border-color: var(--error);
+            box-shadow: 0 0 0 4px var(--error-light);
+            background-color: var(--surface);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: var(--input-bg);
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            cursor: pointer;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 22px;
+            height: 22px;
+            margin-top: 2px;
+            accent-color: var(--error);
+            cursor: pointer;
+        }
+
+        .checkbox-group label {
+            font-weight: normal;
+            font-size: 1rem;
+            cursor: pointer;
+            line-height: 1.5;
+        }
+
+        .btn-delete {
+            background-color: var(--error);
+            color: white;
+            border: none;
+            padding: 18px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-delete:hover {
+            background-color: #B71C1C;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px var(--error-light);
+        }
+
+        .btn-delete:active {
+            transform: scale(0.98);
+        }
+
+        .success-message {
+            display: none;
+            background-color: var(--success-light);
+            color: var(--success);
+            border-inline-start: 4px solid var(--success);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .success-message i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .success-message strong {
+            display: block;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="brand">
+            <i class="fa-solid fa-peace"></i>
+            <span data-i18n="appName">المسبحة</span>
+        </div>
+        <div class="controls">
+            <button class="icon-btn" id="themeToggle" title="Toggle Theme">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <button class="icon-btn" id="langToggle" title="Change Language">
+                <i class="fa-solid fa-globe"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <h1 data-i18n="headerTitle">طلب حذف الحساب</h1>
+        <p data-i18n="headerDesc" style="color: rgba(255, 255, 255, 0.95); font-size: 1.2rem; font-weight: 600; max-width: 600px; margin: 15px auto 0;">قدم طلبك لحذف الحساب ومسح كافة بياناتك وسجلاتك من خوادمنا بشكل آمن ونهائي.</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        
+        <div class="warning-box">
+            <strong><i class="fa-solid fa-triangle-exclamation"></i> <span data-i18n="warningTitle">تحذير هام!</span></strong>
+            <p data-i18n="warningDesc">تقديم هذا الطلب سيؤدي إلى الحذف النهائي لحسابك، وكافة بياناتك، وسجلات التسبيح والأوراد المحفوظة سحابياً. هذا الإجراء لا يمكن التراجع عنه بأي شكل من الأشكال.</p>
+        </div>
+
+        <div id="successMsg" class="success-message">
+            <i class="fa-solid fa-circle-check"></i>
+            <strong data-i18n="successTitle">تم استلام طلبك بنجاح!</strong>
+            <span data-i18n="successDesc">سيتم معالجة طلبك وحذف كافة بياناتك خلال 3 إلى 7 أيام عمل. سيصلك بريد إلكتروني للتأكيد بمجرد إتمام عملية الحذف.</span>
+        </div>
+
+        <form id="deleteForm" onsubmit="submitForm(event)">
+            <div class="input-group">
+                <label for="email" data-i18n="emailLabel">البريد الإلكتروني المسجل في التطبيق *</label>
+                <input type="email" id="email" name="email" required placeholder="example@gmail.com" dir="ltr" style="text-align: left;">
+            </div>
+
+            <div class="input-group">
+                <label for="reason" data-i18n="reasonLabel">سبب الحذف (اختياري)</label>
+                <textarea id="reason" name="reason" data-i18n-ph="reasonPlaceholder" placeholder="أخبرنا عن سبب رغبتك في حذف الحساب لمساعدتنا على تحسين الخدمة..."></textarea>
+            </div>
+
+            <div class="checkbox-group" onclick="document.getElementById('confirm').click();">
+                <input type="checkbox" id="confirm" required onclick="event.stopPropagation();">
+                <label for="confirm" data-i18n="confirmLabel">أؤكد أنني أفهم أن هذا الإجراء سيؤدي إلى مسح بياناتي نهائياً وبلا رجعة، وأرغب بالاستمرار.</label>
+            </div>
+
+            <button type="submit" class="btn-delete">
+                <i class="fa-solid fa-trash-can"></i> <span data-i18n="btnSubmit">تأكيد طلب حذف الحساب</span>
+            </button>
+        </form>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#" data-i18n="footerHome">الرئيسية</a>
+            <a href="privacy-policy.html" data-i18n="footerPrivacy">سياسة الخصوصية</a>
+            <a href="delete-account.html" data-i18n="footerDelete">طلب حذف الحساب</a>
+            <a href="contact.html" data-i18n="footerContact">تواصل معنا</a>
+            <a href="suggestions.html" data-i18n="footerSuggestions">المقترحات</a>
+        </div>
+        <p class="copyright" data-i18n="footerCopy">جميع الحقوق محفوظة &copy; 2026 تطبيق المسبحة</p>
+    </footer>
+
+    <!-- Translations & Logic -->
+    <script>
+        const translations = {
+            ar: {
+                pageTitle: "حذف الحساب - تطبيق المسبحة",
+                appName: "المسبحة",
+                headerTitle: "طلب حذف الحساب",
+                headerDesc: "قدم طلبك لحذف الحساب ومسح كافة بياناتك وسجلاتك من خوادمنا بشكل آمن ونهائي.",
+                warningTitle: "تحذير هام!",
+                warningDesc: "تقديم هذا الطلب سيؤدي إلى الحذف النهائي لحسابك، وكافة بياناتك، وسجلات التسبيح والأوراد المحفوظة سحابياً. هذا الإجراء لا يمكن التراجع عنه بأي شكل من الأشكال.",
+                successTitle: "تم استلام طلبك بنجاح!",
+                successDesc: "سيتم معالجة طلبك وحذف كافة بياناتك خلال 3 إلى 7 أيام عمل. سيصلك بريد إلكتروني للتأكيد بمجرد إتمام عملية الحذف.",
+                emailLabel: "البريد الإلكتروني المسجل في التطبيق *",
+                reasonLabel: "سبب الحذف (اختياري)",
+                reasonPlaceholder: "أخبرنا عن سبب رغبتك في حذف الحساب لمساعدتنا على تحسين الخدمة...",
+                confirmLabel: "أؤكد أنني أفهم أن هذا الإجراء سيؤدي إلى مسح بياناتي نهائياً وبلا رجعة، وأرغب بالاستمرار.",
+                btnSubmit: "تأكيد طلب حذف الحساب",
+                footerHome: "الرئيسية",
+                footerPrivacy: "سياسة الخصوصية",
+                footerDelete: "طلب حذف الحساب",
+                footerContact: "تواصل معنا",
+                footerSuggestions: "اقتراحاتكم",
+                footerCopy: "جميع الحقوق محفوظة &copy; 2026 تطبيق المسبحة"
+            },
+            en: {
+                pageTitle: "Delete Account - Almsbha App",
+                appName: "Almsbha",
+                headerTitle: "Account Deletion Request",
+                headerDesc: "Submit your request to securely and permanently delete your account, data, and records from our servers.",
+                warningTitle: "Important Warning!",
+                warningDesc: "Submitting this request will result in the permanent deletion of your account, all your data, and cloud-saved Tasbih records. This action cannot be undone under any circumstances.",
+                successTitle: "Request Received Successfully!",
+                successDesc: "Your request will be processed, and all your data will be deleted within 3 to 7 business days. You will receive a confirmation email once the deletion is complete.",
+                emailLabel: "Registered Email Address *",
+                reasonLabel: "Reason for Deletion (Optional)",
+                reasonPlaceholder: "Please tell us why you want to delete your account to help us improve our service...",
+                confirmLabel: "I confirm that I understand this action will permanently and irreversibly erase my data, and I wish to proceed.",
+                btnSubmit: "Confirm Account Deletion",
+                footerHome: "Home",
+                footerPrivacy: "Privacy Policy",
+                footerDelete: "Request Account Deletion",
+                footerContact: "Contact Us",
+                footerSuggestions: "Suggestions",
+                footerCopy: "All rights reserved &copy; 2026 Almsbha App"
+            }
+        };
+
+        let currentLang = 'ar';
+        let currentTheme = 'light';
+
+        // Initialize
+        function init() {
+            // Detect System Language
+            const sysLang = navigator.language.slice(0, 2);
+            if (sysLang === 'ar' || sysLang === 'en') {
+                currentLang = sysLang;
+            } else {
+                currentLang = 'en'; // fallback
+            }
+            
+            // Detect System Theme
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                currentTheme = 'dark';
+            }
+
+            // Load saved preferences if any
+            const savedLang = localStorage.getItem('almsbha_lang');
+            if (savedLang) currentLang = savedLang;
+            
+            const savedTheme = localStorage.getItem('almsbha_theme');
+            if (savedTheme) currentTheme = savedTheme;
+
+            applyLanguage(currentLang);
+            applyTheme(currentTheme);
+
+            // Listeners
+            document.getElementById('langToggle').addEventListener('click', () => {
+                currentLang = currentLang === 'ar' ? 'en' : 'ar';
+                localStorage.setItem('almsbha_lang', currentLang);
+                applyLanguage(currentLang);
+            });
+
+            document.getElementById('themeToggle').addEventListener('click', () => {
+                currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+                localStorage.setItem('almsbha_theme', currentTheme);
+                applyTheme(currentTheme);
+            });
+        }
+
+        function applyLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    if (el.tagName === 'TITLE') {
+                        document.title = translations[lang][key];
+                    } else {
+                        el.innerHTML = translations[lang][key];
+                    }
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+                const key = el.getAttribute('data-i18n-ph');
+                if (translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
+                }
+            });
+
+            // Adjust font icon for language button
+            const langBtn = document.getElementById('langToggle');
+            langBtn.innerHTML = lang === 'ar' ? '<span style="font-size: 1rem; font-weight: bold;">EN</span>' : '<span style="font-size: 1rem; font-weight: bold;">ع</span>';
+        }
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            const themeBtn = document.getElementById('themeToggle');
+            themeBtn.innerHTML = theme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+        }
+
+        function submitForm(event) {
+            event.preventDefault();
+            // Form handling logic (API call or similar goes here in production)
+            
+            document.getElementById('deleteForm').style.display = 'none';
+            document.getElementById('successMsg').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Run init
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

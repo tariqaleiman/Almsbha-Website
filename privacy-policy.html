@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="pageTitle">سياسة الخصوصية - تطبيق المسبحة</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Light Theme Variables */
+            --primary: #B24C33;
+            --primary-light: #E77A5D;
+            --primary-dark: #8C3A25;
+            --background: #F8F9FA;
+            --surface: #FFFFFF;
+            --text-primary: #1A1A1A;
+            --text-secondary: #4A4A4A;
+            --border: #E5E7EB;
+            --shadow: rgba(0, 0, 0, 0.05);
+            --header-text: #FFFFFF;
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --font-ar: 'Cairo', sans-serif;
+            --font-en: 'Inter', sans-serif;
+        }
+
+        [data-theme="dark"] {
+            /* Dark Theme Variables */
+            --primary: #E77A5D;
+            --primary-light: #FF9B82;
+            --primary-dark: #B24C33;
+            --background: #121212;
+            --surface: #1E1E1E;
+            --text-primary: #F3F4F6;
+            --text-secondary: #9CA3AF;
+            --border: #374151;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --header-text: #FFFFFF;
+            --glass-bg: rgba(30, 30, 30, 0.9);
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            font-family: var(--font-ar);
+            background-color: var(--background);
+            color: var(--text-primary);
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body[dir="ltr"] {
+            font-family: var(--font-en);
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            z-index: 1000;
+        }
+
+        .brand {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+        }
+
+        .icon-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.2s ease;
+        }
+
+        .icon-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: var(--header-text);
+            padding: 120px 20px 80px;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            margin-top: 15px;
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.2rem;
+            font-weight: 600;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Main Content Container */
+        .container {
+            max-width: 900px;
+            margin: -40px auto 60px;
+            background: var(--surface);
+            padding: 50px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px var(--shadow);
+            position: relative;
+            z-index: 10;
+        }
+
+        .last-updated {
+            display: inline-block;
+            background: rgba(178, 76, 51, 0.1);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        h2 i {
+            font-size: 1.4rem;
+            opacity: 0.8;
+        }
+
+        h3 {
+            color: var(--text-primary);
+            font-size: 1.3rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        ul {
+            padding-inline-start: 20px;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+        }
+
+        li strong {
+            color: var(--text-primary);
+        }
+
+        .highlight-box {
+            background-color: rgba(178, 76, 51, 0.05);
+            border-inline-start: 4px solid var(--primary);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-link:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(178, 76, 51, 0.2);
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: -20px 15px 40px;
+                padding: 30px 20px;
+                border-radius: 20px;
+            }
+            .header {
+                padding: 100px 15px 60px;
+                clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            }
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="brand">
+            <i class="fa-solid fa-peace"></i>
+            <span data-i18n="appName">المسبحة</span>
+        </div>
+        <div class="controls">
+            <button class="icon-btn" id="themeToggle" title="Toggle Theme">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <button class="icon-btn" id="langToggle" title="Change Language">
+                <i class="fa-solid fa-globe"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <h1 data-i18n="headerTitle">سياسة الخصوصية</h1>
+        <p data-i18n="headerDesc">نلتزم بحماية بياناتك وخصوصيتك بأعلى معايير الأمان والشفافية.</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        
+        <div class="last-updated">
+            <i class="fa-regular fa-calendar-check"></i> <span data-i18n="lastUpdated">آخر تحديث: 28 يوليو 2026</span>
+        </div>
+
+        <div class="highlight-box">
+            <strong data-i18n="introTitle">مقدمة:</strong>
+            <span data-i18n="introDesc">نحن في تطبيق "المسبحة" نولي خصوصيتك أهمية بالغة. تشرح هذه السياسة بوضوح وشفافية كيفية جمعنا للمعلومات، واستخدامها، وحمايتها عند استخدامك لتطبيقنا والخدمات المرتبطة به. نلتزم بالامتثال لقوانين حماية البيانات العالمية بما في ذلك اللائحة العامة لحماية البيانات (GDPR) وقانون حماية خصوصية الأطفال (COPPA).</span>
+        </div>
+
+        <h2 data-i18n="sec1Title"><i class="fa-solid fa-database"></i> 1. البيانات التي نجمعها</h2>
+        <p data-i18n="sec1Desc">لتقديم أفضل تجربة ممكنة، نقوم بجمع بعض البيانات عند استخدامك للتطبيق:</p>
+        <ul>
+            <li><strong data-i18n="sec1Item1Title">المعلومات الشخصية وحسابات المستخدمين:</strong> <span data-i18n="sec1Item1Desc">عند التسجيل باستخدام حساب Google أو البريد الإلكتروني لإنشاء حساب في التطبيق، نجمع اسمك، عنوان بريدك الإلكتروني، وصورة ملفك الشخصي. هذا ضروري لإنشاء حسابك وتوفير ميزة المزامنة السحابية.</span></li>
+            <li><strong data-i18n="sec1Item2Title">بيانات الاستخدام وقواعد البيانات (Firebase):</strong> <span data-i18n="sec1Item2Desc">نقوم بتخزين سجلات الأذكار والتسبيح والأهداف التي تنجزها باستخدام قواعد بيانات (Firebase Realtime Database / Firestore) لضمان مزامنتها بين أجهزتك وعدم ضياعها.</span></li>
+            <li><strong data-i18n="sec1Item3Title">بيانات الجهاز والتحليلات (Firebase Analytics):</strong> <span data-i18n="sec1Item3Desc">نجمع معلومات غير محددة للهوية مثل نوع الجهاز، إصدار نظام التشغيل، وإحصائيات الاستخدام لتحسين أداء التطبيق وحل المشاكل التقنية عبر خدمة Firebase Analytics.</span></li>
+        </ul>
+
+        <h2 data-i18n="sec2Title"><i class="fa-solid fa-gears"></i> 2. كيف نستخدم معلوماتك؟</h2>
+        <p data-i18n="sec2Desc">نستخدم المعلومات المجمعة للأغراض الأساسية التالية:</p>
+        <ul>
+            <li data-i18n="sec2Item1">إنشاء وإدارة حسابك وتوفير الخدمات الأساسية للتطبيق.</li>
+            <li data-i18n="sec2Item2">مزامنة بيانات التسبيح والأوراد الخاصة بك سحابياً لحفظها.</li>
+            <li data-i18n="sec2Item3">تحليل أداء التطبيق وتحسين واجهة المستخدم وتجربته.</li>
+            <li data-i18n="sec2Item4">التواصل معك بخصوص أي تحديثات هامة أو الدعم الفني.</li>
+            <li data-i18n="sec2Item5">إدارة الاشتراكات المميزة (Premium) وتفعيل المزايا الخاصة بها وربطها بحسابك.</li>
+        </ul>
+
+        <h2 data-i18n="sec3Title"><i class="fa-solid fa-share-nodes"></i> 3. مشاركة البيانات وخدمات الطرف الثالث</h2>
+        <p data-i18n="sec3Desc">نحن لا نبيع أو نؤجر معلوماتك الشخصية. يتم مشاركة بعض البيانات المجهولة أو الضرورية فقط مع مزودي الخدمات الموثوقين المدمجين في التطبيق:</p>
+        <ul>
+            <li><strong data-i18n="sec3Item1Title">Google Firebase:</strong> <span data-i18n="sec3Item1Desc">تُستخدم خدمات فايربيس للاستضافة، قواعد البيانات (Realtime DB/Firestore)، إنشاء الحسابات والمصادقة (Authentication)، والتحليلات (Analytics).</span></li>
+            <li><strong data-i18n="sec3Item2Title">Google AdMob (الإعلانات):</strong> <span data-i18n="sec3Item2Desc">في النسخة المجانية، نستخدم AdMob لعرض الإعلانات. قد يقوم AdMob باستخدام ملفات تعريف الارتباط (Cookies) أو معرفات الإعلانات لتخصيص الإعلانات وفقاً لاهتماماتك. (ملاحظة: لا يتم عرض أي إعلانات في نسخة الاشتراكات المميزة Premium).</span></li>
+            <li><strong data-i18n="sec3Item3Title">Google Play Billing (الاشتراكات):</strong> <span data-i18n="sec3Item3Desc">تُستخدم لمعالجة عمليات الشراء والاشتراكات داخل التطبيق. نحن لا نعالج أو نخزن بيانات بطاقتك الائتمانية إطلاقاً على خوادمنا.</span></li>
+        </ul>
+
+        <h2 data-i18n="sec4Title"><i class="fa-solid fa-cookie-bite"></i> 4. ملفات تعريف الارتباط (Cookies) والتقنيات المشابهة</h2>
+        <p data-i18n="sec4Desc">قد نستخدم نحن أو شركاؤنا (مثل AdMob و Firebase) تقنيات تتبع مشابهة لملفات تعريف الارتباط أو معرفات أجهزة الجوال لجمع معلومات حول تفاعلك مع التطبيق والإعلانات. يمكنك إدارة تفضيلات الإعلانات الخاصة بك من خلال إعدادات جهازك الذكي (مثال: إيقاف تخصيص الإعلانات عبر إعدادات الخصوصية في هاتفك).</p>
+
+        <h2 data-i18n="sec5Title"><i class="fa-solid fa-child-reaching"></i> 5. خصوصية الأطفال (COPPA)</h2>
+        <p data-i18n="sec5Desc">خدماتنا موجهة للجمهور العام وتطبيقنا لا يجمع عن قصد أي معلومات تعريف شخصية من الأطفال دون سن 13 عاماً. إذا علمنا أن طفلاً دون سن 13 عاماً قد زودنا بمعلومات شخصية قابلة للتحديد، فسنقوم بحذفها من خوادمنا فوراً.</p>
+
+        <h2 data-i18n="sec6Title"><i class="fa-solid fa-shield-halved"></i> 6. حقوق المستخدم وحذف البيانات</h2>
+        <p data-i18n="sec6Desc">بموجب قوانين حماية البيانات (مثل GDPR)، لك الحق في الوصول إلى بياناتك أو تعديلها أو طلب مسحها تماماً. نحتفظ ببياناتك طالما كان حسابك نشطاً لتقديم الخدمات المطلوبة.</p>
+        <p data-i18n="sec6Desc2">لكامل الحق في طلب حذف حسابك، ومسح كافة البيانات وسجلات التسبيح المحفوظة نهائياً من خوادمنا، يرجى استخدام نموذج الحذف المخصص أسفله:</p>
+        <a href="delete-account.html" class="btn-link" id="deleteAccountLink">
+            <i class="fa-solid fa-user-xmark"></i> <span data-i18n="btnDeleteForm">الانتقال إلى نموذج حذف الحساب</span>
+        </a>
+
+        <h2 data-i18n="sec7Title"><i class="fa-solid fa-file-signature"></i> 7. التغييرات على هذه السياسة</h2>
+        <p data-i18n="sec7Desc">قد نقوم بتحديث سياسة الخصوصية من وقت لآخر. سنقوم بإعلامك بأي تغييرات جوهرية عن طريق تحديث "تاريخ آخر تحديث" أعلى هذه الصفحة، أو عبر إشعار داخل التطبيق.</p>
+
+        <h2 data-i18n="sec8Title"><i class="fa-solid fa-envelope"></i> 8. تواصل معنا</h2>
+        <p data-i18n="sec8Desc">إذا كان لديك أي أسئلة، استفسارات، أو طلبات تتعلق بهذه السياسة أو ببياناتك، يرجى التواصل معنا عبر البريد الإلكتروني:</p>
+        <a href="contact.html" style="color: var(--primary); font-weight: 700; font-size: 1.1rem;">tariqaleiman@gmail.com</a>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#" data-i18n="footerHome">الرئيسية</a>
+            <a href="privacy-policy.html" data-i18n="footerPrivacy">سياسة الخصوصية</a>
+            <a href="delete-account.html" data-i18n="footerDelete">طلب حذف الحساب</a>
+            <a href="contact.html" data-i18n="footerContact">تواصل معنا</a>
+            <a href="suggestions.html" data-i18n="footerSuggestions">المقترحات</a>
+        </div>
+        <p class="copyright" data-i18n="footerCopy">جميع الحقوق محفوظة &copy; 2026 تطبيق المسبحة</p>
+    </footer>
+
+    <!-- Translations & Logic -->
+    <script>
+        const translations = {
+            ar: {
+                pageTitle: "سياسة الخصوصية - تطبيق المسبحة",
+                appName: "المسبحة",
+                headerTitle: "سياسة الخصوصية",
+                headerDesc: "نلتزم بحماية بياناتك وخصوصيتك بأعلى معايير الأمان والشفافية.",
+                lastUpdated: "آخر تحديث: 28 يوليو 2026",
+                introTitle: "مقدمة:",
+                introDesc: "نحن في تطبيق \"المسبحة\" نولي خصوصيتك أهمية بالغة. تشرح هذه السياسة بوضوح وشفافية كيفية جمعنا للمعلومات، واستخدامها، وحمايتها عند استخدامك لتطبيقنا والخدمات المرتبطة به. نلتزم بالامتثال لقوانين حماية البيانات العالمية بما في ذلك اللائحة العامة لحماية البيانات (GDPR) وقانون حماية خصوصية الأطفال (COPPA).",
+                sec1Title: "1. البيانات التي نجمعها",
+                sec1Desc: "لتقديم أفضل تجربة ممكنة، نقوم بجمع بعض البيانات عند استخدامك للتطبيق:",
+                sec1Item1Title: "المعلومات الشخصية وحسابات المستخدمين:",
+                sec1Item1Desc: "عند التسجيل باستخدام حساب Google أو البريد الإلكتروني لإنشاء حساب في التطبيق، نجمع اسمك، عنوان بريدك الإلكتروني، وصورة ملفك الشخصي. هذا ضروري لإنشاء حسابك وتوفير ميزة المزامنة السحابية.",
+                sec1Item2Title: "بيانات الاستخدام وقواعد البيانات (Firebase):",
+                sec1Item2Desc: "نقوم بتخزين سجلات الأذكار والتسبيح والأهداف التي تنجزها باستخدام قواعد بيانات (Firebase Realtime Database / Firestore) لضمان مزامنتها بين أجهزتك وعدم ضياعها.",
+                sec1Item3Title: "بيانات الجهاز والتحليلات (Firebase Analytics):",
+                sec1Item3Desc: "نجمع معلومات غير محددة للهوية مثل نوع الجهاز، إصدار نظام التشغيل، وإحصائيات الاستخدام لتحسين أداء التطبيق وحل المشاكل التقنية عبر خدمة Firebase Analytics.",
+                sec2Title: "2. كيف نستخدم معلوماتك؟",
+                sec2Desc: "نستخدم المعلومات المجمعة للأغراض الأساسية التالية:",
+                sec2Item1: "إنشاء وإدارة حسابك وتوفير الخدمات الأساسية للتطبيق.",
+                sec2Item2: "مزامنة بيانات التسبيح والأوراد الخاصة بك سحابياً لحفظها.",
+                sec2Item3: "تحليل أداء التطبيق وتحسين واجهة المستخدم وتجربته.",
+                sec2Item4: "التواصل معك بخصوص أي تحديثات هامة أو الدعم الفني.",
+                sec2Item5: "إدارة الاشتراكات المميزة (Premium) وتفعيل المزايا الخاصة بها وربطها بحسابك.",
+                sec3Title: "3. مشاركة البيانات وخدمات الطرف الثالث",
+                sec3Desc: "نحن لا نبيع أو نؤجر معلوماتك الشخصية. يتم مشاركة بعض البيانات المجهولة أو الضرورية فقط مع مزودي الخدمات الموثوقين المدمجين في التطبيق:",
+                sec3Item1Title: "Google Firebase:",
+                sec3Item1Desc: "تُستخدم خدمات فايربيس للاستضافة، قواعد البيانات (Realtime DB/Firestore)، إنشاء الحسابات والمصادقة (Authentication)، والتحليلات (Analytics).",
+                sec3Item2Title: "Google AdMob (الإعلانات):",
+                sec3Item2Desc: "في النسخة المجانية، نستخدم AdMob لعرض الإعلانات. قد يقوم AdMob باستخدام ملفات تعريف الارتباط (Cookies) أو معرفات الإعلانات لتخصيص الإعلانات وفقاً لاهتماماتك. (ملاحظة: لا يتم عرض أي إعلانات في نسخة الاشتراكات المميزة Premium).",
+                sec3Item3Title: "Google Play Billing (الاشتراكات):",
+                sec3Item3Desc: "تُستخدم لمعالجة عمليات الشراء والاشتراكات داخل التطبيق. نحن لا نعالج أو نخزن بيانات بطاقتك الائتمانية إطلاقاً على خوادمنا.",
+                sec4Title: "4. ملفات تعريف الارتباط (Cookies) والتقنيات المشابهة",
+                sec4Desc: "قد نستخدم نحن أو شركاؤنا (مثل AdMob و Firebase) تقنيات تتبع مشابهة لملفات تعريف الارتباط أو معرفات أجهزة الجوال لجمع معلومات حول تفاعلك مع التطبيق والإعلانات. يمكنك إدارة تفضيلات الإعلانات الخاصة بك من خلال إعدادات جهازك الذكي (مثال: إيقاف تخصيص الإعلانات عبر إعدادات الخصوصية في هاتفك).",
+                sec5Title: "5. خصوصية الأطفال (COPPA)",
+                sec5Desc: "خدماتنا موجهة للجمهور العام وتطبيقنا لا يجمع عن قصد أي معلومات تعريف شخصية من الأطفال دون سن 13 عاماً. إذا علمنا أن طفلاً دون سن 13 عاماً قد زودنا بمعلومات شخصية قابلة للتحديد، فسنقوم بحذفها من خوادمنا فوراً.",
+                sec6Title: "6. حقوق المستخدم وحذف البيانات",
+                sec6Desc: "بموجب قوانين حماية البيانات (مثل GDPR)، لك الحق في الوصول إلى بياناتك أو تعديلها أو طلب مسحها تماماً. نحتفظ ببياناتك طالما كان حسابك نشطاً لتقديم الخدمات المطلوبة.",
+                sec6Desc2: "لكامل الحق في طلب حذف حسابك، ومسح كافة البيانات وسجلات التسبيح المحفوظة نهائياً من خوادمنا، يرجى استخدام نموذج الحذف المخصص أسفله:",
+                btnDeleteForm: "الانتقال إلى نموذج حذف الحساب",
+                sec7Title: "7. التغييرات على هذه السياسة",
+                sec7Desc: "قد نقوم بتحديث سياسة الخصوصية من وقت لآخر. سنقوم بإعلامك بأي تغييرات جوهرية عن طريق تحديث \"تاريخ آخر تحديث\" أعلى هذه الصفحة، أو عبر إشعار داخل التطبيق.",
+                sec8Title: "8. تواصل معنا",
+                sec8Desc: "إذا كان لديك أي أسئلة، استفسارات، أو طلبات تتعلق بهذه السياسة أو ببياناتك، يرجى التواصل معنا عبر البريد الإلكتروني:",
+                footerHome: "الرئيسية",
+                footerPrivacy: "سياسة الخصوصية",
+                footerDelete: "طلب حذف الحساب",
+                footerContact: "تواصل معنا",
+                footerSuggestions: "اقتراحاتكم",
+                footerCopy: "جميع الحقوق محفوظة &copy; 2026 تطبيق المسبحة"
+            },
+            en: {
+                pageTitle: "Privacy Policy - Almsbha App",
+                appName: "Almsbha",
+                headerTitle: "Privacy Policy",
+                headerDesc: "We are committed to protecting your data and privacy with the highest standards of security and transparency.",
+                lastUpdated: "Last Updated: July 28, 2026",
+                introTitle: "Introduction:",
+                introDesc: "At the \"Almsbha\" app, we take your privacy very seriously. This policy clearly explains how we collect, use, and protect your information when you use our app and associated services. We comply with global data protection laws including GDPR and COPPA.",
+                sec1Title: "1. Data We Collect",
+                sec1Desc: "To provide the best possible experience, we collect certain data when you use the app:",
+                sec1Item1Title: "Personal Information & Accounts:",
+                sec1Item1Desc: "When signing in with Google or email to create an account, we collect your name, email address, and profile picture. This is necessary for account creation and cloud syncing.",
+                sec1Item2Title: "Usage Data & Databases (Firebase):",
+                sec1Item2Desc: "We store your Dhikr, Tasbih records, and achieved goals using (Firebase Realtime Database / Firestore) to ensure cross-device synchronization and prevent data loss.",
+                sec1Item3Title: "Device Data & Analytics (Firebase Analytics):",
+                sec1Item3Desc: "We collect non-personally identifiable information such as device type, OS version, and usage statistics to improve app performance and troubleshoot issues via Firebase Analytics.",
+                sec2Title: "2. How We Use Your Information?",
+                sec2Desc: "We use the collected information for the following primary purposes:",
+                sec2Item1: "Creating and managing your account and providing core app services.",
+                sec2Item2: "Syncing your Tasbih and Awrad data securely to the cloud.",
+                sec2Item3: "Analyzing app performance to improve the user interface and experience.",
+                sec2Item4: "Communicating with you regarding important updates or customer support.",
+                sec2Item5: "Managing Premium subscriptions, activating associated features, and linking them to your account.",
+                sec3Title: "3. Data Sharing & Third-Party Services",
+                sec3Desc: "We do not sell or rent your personal information. Anonymous or necessary data is only shared with trusted service providers integrated into the app:",
+                sec3Item1Title: "Google Firebase:",
+                sec3Item1Desc: "Used for hosting, databases (Realtime DB/Firestore), account creation and authentication (Auth), and analytics.",
+                sec3Item2Title: "Google AdMob (Advertising):",
+                sec3Item2Desc: "In the free version, we use AdMob to display ads. AdMob may use cookies or mobile ad identifiers to personalize ads based on your interests. (Note: Ads are not shown in the Premium subscription version).",
+                sec3Item3Title: "Google Play Billing (Subscriptions):",
+                sec3Item3Desc: "Used to process in-app purchases and subscriptions. We do not process or store your credit card information on our servers.",
+                sec4Title: "4. Cookies & Similar Technologies",
+                sec4Desc: "We or our partners (like AdMob and Firebase) may use tracking technologies similar to cookies or mobile device identifiers to collect information about your interaction with the app and ads. You can manage your ad preferences via your device settings (e.g., opting out of personalized ads via your phone's privacy settings).",
+                sec5Title: "5. Children's Privacy (COPPA)",
+                sec5Desc: "Our services are intended for a general audience, and we do not knowingly collect personal information from children under 13. If we discover that a child under 13 has provided us with identifiable personal information, we will delete it immediately from our servers.",
+                sec6Title: "6. User Rights & Data Deletion",
+                sec6Desc: "Under data protection laws (e.g., GDPR), you have the right to access, modify, or permanently delete your data. We retain your data as long as your account is active to provide the requested services.",
+                sec6Desc2: "You have the full right to request account deletion and permanently erase all saved data and Tasbih records from our servers. Please use the dedicated deletion form below:",
+                btnDeleteForm: "Go to Account Deletion Form",
+                sec7Title: "7. Changes to This Policy",
+                sec7Desc: "We may update this privacy policy from time to time. We will notify you of any material changes by updating the \"Last Updated\" date at the top of this page, or via an in-app notification.",
+                sec8Title: "8. Contact Us",
+                sec8Desc: "If you have any questions, concerns, or requests regarding this policy or your data, please contact us via email:",
+                footerHome: "Home",
+                footerPrivacy: "Privacy Policy",
+                footerDelete: "Request Account Deletion",
+                footerContact: "Contact Us",
+                footerSuggestions: "Suggestions",
+                footerCopy: "All rights reserved &copy; 2026 Almsbha App"
+            }
+        };
+
+        let currentLang = 'ar';
+        let currentTheme = 'light';
+
+        // Initialize
+        function init() {
+            // Detect System Language
+            const sysLang = navigator.language.slice(0, 2);
+            if (sysLang === 'ar' || sysLang === 'en') {
+                currentLang = sysLang;
+            } else {
+                currentLang = 'en'; // fallback for non-arabic/non-english
+            }
+            
+            // Detect System Theme
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                currentTheme = 'dark';
+            }
+
+            // Load saved preferences if any (overrides system)
+            const savedLang = localStorage.getItem('almsbha_lang');
+            if (savedLang) currentLang = savedLang;
+            
+            const savedTheme = localStorage.getItem('almsbha_theme');
+            if (savedTheme) currentTheme = savedTheme;
+
+            applyLanguage(currentLang);
+            applyTheme(currentTheme);
+
+            // Listeners
+            document.getElementById('langToggle').addEventListener('click', () => {
+                currentLang = currentLang === 'ar' ? 'en' : 'ar';
+                localStorage.setItem('almsbha_lang', currentLang);
+                applyLanguage(currentLang);
+            });
+
+            document.getElementById('themeToggle').addEventListener('click', () => {
+                currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+                localStorage.setItem('almsbha_theme', currentTheme);
+                applyTheme(currentTheme);
+            });
+        }
+
+        function applyLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    if (el.tagName === 'TITLE') {
+                        document.title = translations[lang][key];
+                    } else if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = translations[lang][key];
+                    } else {
+                        el.innerHTML = translations[lang][key];
+                    }
+                }
+            });
+
+            // Adjust font icon for language button
+            const langBtn = document.getElementById('langToggle');
+            langBtn.innerHTML = lang === 'ar' ? '<span style="font-size: 1rem; font-weight: bold;">EN</span>' : '<span style="font-size: 1rem; font-weight: bold;">ع</span>';
+        }
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            const themeBtn = document.getElementById('themeToggle');
+            themeBtn.innerHTML = theme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+        }
+
+        // Run init
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

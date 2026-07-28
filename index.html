@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="pageTitle">تطبيق المسبحة - رفيقك لذكر الله</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Light Theme Variables - Matching Privacy Policy */
+            --primary: #B24C33;
+            --primary-light: #E77A5D;
+            --primary-dark: #8C3A25;
+            --background: #F8F9FA;
+            --surface: #FFFFFF;
+            --text-primary: #1A1A1A;
+            --text-secondary: #4A4A4A;
+            --border: #E5E7EB;
+            --shadow: rgba(0, 0, 0, 0.05);
+            --header-text: #FFFFFF;
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --font-ar: 'Cairo', sans-serif;
+            --font-en: 'Inter', sans-serif;
+        }
+
+        [data-theme="dark"] {
+            /* Dark Theme Variables - Matching Privacy Policy */
+            --primary: #E77A5D;
+            --primary-light: #FF9B82;
+            --primary-dark: #B24C33;
+            --background: #121212;
+            --surface: #1E1E1E;
+            --text-primary: #F3F4F6;
+            --text-secondary: #9CA3AF;
+            --border: #374151;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --header-text: #FFFFFF;
+            --glass-bg: rgba(30, 30, 30, 0.9);
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            font-family: var(--font-ar);
+            background-color: var(--background);
+            color: var(--text-primary);
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body[dir="ltr"] {
+            font-family: var(--font-en);
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 75px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            z-index: 1000;
+            box-shadow: 0 4px 6px -1px var(--shadow);
+        }
+
+        .brand {
+            font-weight: 800;
+            font-size: 1.6rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+        }
+
+        .icon-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.2s ease;
+        }
+
+        .icon-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 5% 100px;
+            background: radial-gradient(circle at top right, rgba(178, 76, 51, 0.1), var(--background));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 90vh;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg-icon {
+            position: absolute;
+            font-size: 40rem;
+            color: var(--primary);
+            opacity: 0.03;
+            z-index: 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 10;
+        }
+
+        .badge-new {
+            display: inline-block;
+            background-color: rgba(178, 76, 51, 0.1);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            border: 1px solid rgba(178, 76, 51, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin: 0 0 20px;
+            line-height: 1.3;
+            color: var(--text-primary);
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .store-badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .store-badge {
+            height: 60px;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .store-badge:hover {
+            transform: scale(1.05);
+        }
+
+        /* Section Global */
+        .section {
+            padding: 100px 5%;
+            position: relative;
+        }
+
+        /* Background Varieties */
+        .bg-pattern-dots {
+            background-image: radial-gradient(var(--border) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .bg-pattern-waves {
+            background: linear-gradient(135deg, rgba(178, 76, 51, 0.05) 0%, transparent 100%);
+        }
+
+        .bg-pattern-grid {
+            background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: center center;
+        }
+        
+        .bg-pattern-gradient-alt {
+            background: linear-gradient(to bottom right, var(--background), rgba(178, 76, 51, 0.08));
+        }
+
+        .bg-pattern-radial {
+            background: radial-gradient(circle at center, rgba(178, 76, 51, 0.05) 0%, var(--background) 70%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Feature Split Layout */
+        .feature-split {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1100px;
+            margin: 0 auto;
+            gap: 50px;
+        }
+
+        .feature-split.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .feature-content {
+            flex: 1;
+        }
+
+        .feature-icon-box {
+            width: 65px;
+            height: 65px;
+            background-color: rgba(178, 76, 51, 0.1);
+            color: var(--primary);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(178, 76, 51, 0.1);
+        }
+
+        .feature-content h3 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .feature-content p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+        }
+
+        .feature-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Mockup Placeholder */
+        .mockup-container {
+            width: 320px;
+            height: 640px;
+            background-color: var(--surface);
+            border-radius: 40px;
+            border: 12px solid #1A1A1A;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .mockup-container:hover {
+            transform: translateY(-10px);
+        }
+        
+        .mockup-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 18px;
+            display: block;
+            background-color: var(--background);
+        }
+
+        .mockup-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 130px;
+            height: 28px;
+            background-color: #1A1A1A;
+            border-bottom-left-radius: 18px;
+            border-bottom-right-radius: 18px;
+            z-index: 2;
+        }
+
+        .mockup-placeholder {
+            background-color: rgba(178, 76, 51, 0.05);
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed rgba(178, 76, 51, 0.3);
+            color: var(--primary);
+        }
+
+        .mockup-placeholder i {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .mockup-placeholder span {
+            font-weight: 700;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .mockup-placeholder small {
+            display: block;
+            margin-top: 5px;
+            opacity: 0.7;
+            font-size: 0.95rem;
+        }
+
+        /* Reviews Section */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background-color: var(--surface);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px var(--shadow);
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .stars {
+            color: #F59E0B;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .review-text {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .reviewer-avatar {
+            width: 45px;
+            height: 45px;
+            background-color: var(--primary-light);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        .reviewer-name {
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+        
+        .reviewer-date {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--surface);
+            padding: 60px 20px 30px;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-brand .brand {
+            margin-bottom: 15px;
+        }
+
+        .footer-brand p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .footer-links-group h4 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .footer-links-group ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links-group ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links-group ul a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .footer-links-group ul a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .feature-split, .feature-split.reverse {
+                flex-direction: column;
+                text-align: center;
+            }
+            .feature-icon-box {
+                margin: 0 auto 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-brand {
+                margin: 0 auto;
+            }
+            .brand {
+                justify-content: center;
+            }
+            .footer-bottom {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="brand">
+            <img src="assets/images/logo.png" alt="Logo" style="width: 35px; height: 35px; object-fit: contain;">
+            <span data-i18n="appName">المسبحة</span>
+        </a>
+        <div class="controls">
+            <button class="icon-btn" id="themeToggle" title="Toggle Theme">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <button class="icon-btn" id="langToggle" title="Change Language">
+                <i class="fa-solid fa-globe"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <i class="fa-solid fa-peace hero-bg-icon"></i>
+        <div class="hero-content">
+            <div class="badge-new" data-i18n="heroBadge"><i class="fa-solid fa-star"></i> رفيقك الدائم لذكر الله</div>
+            <h1 data-i18n="heroTitle">لا تغفل عن <span>ذكر الله</span></h1>
+            <p data-i18n="heroDesc">تطبيق المسبحة الشامل يوفر لك تجربة إيمانية متكاملة تشمل الأوراد اليومية، التسبيح الصوتي الذكي، ومتابعة دقيقة لإنجازاتك اليومية لتبقى دائماً على اتصال بخالقك.</p>
+            
+            <div class="store-badges">
+                <!-- Google Play Badge Placeholder -->
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                    <img src="https://play.google.com/intl/en_us/badges/static/images/badges/ar_badge_web_generic.png" alt="Get it on Google Play" class="store-badge">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 1: Voice Tasbih -->
+    <section class="section bg-pattern-gradient-alt">
+        <div class="feature-split">
+            <div class="feature-content">
+                <div class="feature-icon-box" style="background-color: rgba(46, 125, 50, 0.1); color: #2E7D32;"><i class="fa-solid fa-microphone-lines"></i></div>
+                <h3 data-i18n="f1Title">التسبيح الصوتي الذكي</h3>
+                <p data-i18n="f1Desc">سبّح بصوتك دون الحاجة للمس الشاشة. يتعرف التطبيق على الأذكار ويقوم بحسابها تلقائياً أثناء انشغال يديك سواء أثناء القيادة أو أداء أعمالك اليومية.</p>
+            </div>
+            <div class="feature-image">
+                <div class="mockup-container">
+                    <img src="assets/images/screenshots/voice.png" alt="Voice Tasbih Screen" class="mockup-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 2: Daily Wird -->
+    <section class="section bg-pattern-dots">
+        <div class="feature-split reverse">
+            <div class="feature-content">
+                <div class="feature-icon-box" style="background-color: rgba(2, 132, 199, 0.1); color: #0284c7;"><i class="fa-solid fa-book-open-reader"></i></div>
+                <h3 data-i18n="f2Title">الورد اليومي</h3>
+                <p data-i18n="f2Desc">حافظ على أذكار الصباح، المساء، والنوم مع متابعة مستمرة لتقدمك. يوفر لك التطبيق قراءة مريحة للعين مع إمكانية تحديد أهداف يومية.</p>
+            </div>
+            <div class="feature-image">
+                <div class="mockup-container">
+                    <img src="assets/images/screenshots/wird.png" alt="Daily Wird Screen" class="mockup-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 3: Stats -->
+    <section class="section bg-pattern-waves">
+        <div class="feature-split">
+            <div class="feature-content">
+                <div class="feature-icon-box" style="background-color: rgba(217, 119, 6, 0.1); color: #d97706;"><i class="fa-solid fa-chart-pie"></i></div>
+                <h3 data-i18n="f3Title">الإحصائيات والسجل</h3>
+                <p data-i18n="f3Desc">تابع أداءك اليومي وأطول سلسلة استمرار (Streak) في الذكر. يقدم لك التطبيق رسوماً بيانية تفصيلية توضح حصاد أعمالك وتطورك.</p>
+            </div>
+            <div class="feature-image">
+                <div class="mockup-container">
+                    <img src="assets/images/screenshots/stats.png" alt="Statistics Screen" class="mockup-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 4: Cloud Sync -->
+    <section class="section bg-pattern-radial">
+        <div class="feature-split reverse">
+            <div class="feature-content">
+                <div class="feature-icon-box" style="background-color: rgba(147, 51, 234, 0.1); color: #9333ea;"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                <h3 data-i18n="f4Title">المزامنة السحابية</h3>
+                <p data-i18n="f4Desc">حفظ بياناتك وإنجازاتك وسجلات التسبيح بأمان تام سحابياً. يمكنك الرجوع إليها في أي وقت ومن أي جهاز ولن تفقد أورادك أبداً.</p>
+            </div>
+            <div class="feature-image">
+                <div class="mockup-container">
+                    <img src="assets/images/screenshots/sync.png" alt="Cloud Sync Screen" class="mockup-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 5: Achievements -->
+    <section class="section bg-pattern-grid">
+        <div class="feature-split">
+            <div class="feature-content">
+                <div class="feature-icon-box" style="background-color: rgba(225, 29, 72, 0.1); color: #e11d48;"><i class="fa-solid fa-medal"></i></div>
+                <h3 data-i18n="f5Title">نظام الإنجازات</h3>
+                <p data-i18n="f5Desc">شارات ومستويات تحفزك على الاستمرار والتنافس في الخير. احصل على شارات مميزة مثل "مليونية النور" عند وصولك لأهدافك.</p>
+            </div>
+            <div class="feature-image">
+                <div class="mockup-container">
+                    <img src="assets/images/screenshots/achievements.png" alt="Achievements Screen" class="mockup-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 6: Customization & Dark Mode -->
+    <section class="section bg-pattern-gradient-alt">
+        <div class="feature-split reverse">
+            <div class="feature-content">
+                <div class="feature-icon-box" style="background-color: rgba(71, 85, 105, 0.1); color: #475569;"><i class="fa-solid fa-palette"></i></div>
+                <h3 data-i18n="f6Title">التخصيص والوضع الداكن</h3>
+                <p data-i18n="f6Desc">أشكال وخامات متعددة للمسبحة الكلاسيكية لتناسب ذوقك. بالإضافة لدعم كامل للوضع الليلي المريح للعين في التطبيق بأكمله.</p>
+            </div>
+            <div class="feature-image">
+                <div class="mockup-container">
+                    <img src="assets/images/screenshots/customization.png" alt="Customization Screen" class="mockup-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="section">
+        <div class="section-header">
+            <h2 data-i18n="reviewsTitle">قالوا عن التطبيق</h2>
+            <p data-i18n="reviewsDesc">نفخر بخدمة آلاف المستخدمين يومياً ومساعدتهم في الحفاظ على أورادهم.</p>
+        </div>
+        
+        <div class="reviews-grid">
+            <!-- Review 1 -->
+            <div class="review-card">
+                <div>
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">"تطبيق ماشاء الله رب يتقبل منكم"</p>
+                </div>
+                <div class="reviewer-info">
+                    <div class="reviewer-avatar" style="background-color: #2E7D32;">Y</div>
+                    <div>
+                        <div class="reviewer-name">YACINE BENHAMOU</div>
+                        <div class="reviewer-date">تقييم على Google Play</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="review-card">
+                <div>
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">"راااااااااااائع ،سهل و بسيط"</p>
+                </div>
+                <div class="reviewer-info">
+                    <div class="reviewer-avatar" style="background-color: #1565C0;">B</div>
+                    <div>
+                        <div class="reviewer-name">Bensaada hakim</div>
+                        <div class="reviewer-date">تقييم على Google Play</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review 3 -->
+            <div class="review-card">
+                <div>
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">"جزاكم الله خيرا تطبيق جيد جعله الله في ميزان حسناتكم"</p>
+                </div>
+                <div class="reviewer-info">
+                    <div class="reviewer-avatar" style="background-color: #8D6E63;">a</div>
+                    <div>
+                        <div class="reviewer-name">ali beragdar</div>
+                        <div class="reviewer-date">تقييم على Google Play</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review 4 -->
+            <div class="review-card">
+                <div>
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">"جزاكم الله خير الجزاء"</p>
+                </div>
+                <div class="reviewer-info">
+                    <div class="reviewer-avatar" style="background-color: #00897B;">A</div>
+                    <div>
+                        <div class="reviewer-name">Ahmad Rateb</div>
+                        <div class="reviewer-date">تقييم على Google Play</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review 5 -->
+            <div class="review-card">
+                <div>
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">"شكرا لكم، ومن المهم جدا (1) إضافة صوت تنبيه عند الإنتهاء من العدد المستهدف (2) إضافة نظام نقل تلقائي من الذكر المنفذ إلي الذكر الذي يليه .. وفقكم الله لكل خير"</p>
+                </div>
+                <div class="reviewer-info">
+                    <div class="reviewer-avatar" style="background-color: #5E35B1;">ع</div>
+                    <div>
+                        <div class="reviewer-name">عبدالرحمن الفقيه</div>
+                        <div class="reviewer-date">تقييم على Google Play</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2 data-i18n="ctaTitle">ابدأ رحلتك الإيمانية الآن</h2>
+        <p data-i18n="ctaDesc">انضم للآلاف ممن يحافظون على أورادهم اليومية مع تطبيق المسبحة الشامل.</p>
+        <a href="#" target="_blank" rel="noopener noreferrer" style="display: inline-block;">
+            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/ar_badge_web_generic.png" alt="Get it on Google Play" style="height: 70px; border-radius: 12px;">
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="brand" style="justify-content: flex-start;">
+                    <img src="assets/images/logo.png" alt="Logo" style="width: 40px; height: 40px; object-fit: contain;">
+                    <span data-i18n="appName">المسبحة</span>
+                </a>
+                <p data-i18n="footerBrandDesc">رفيقك الدائم لذكر الله. تطبيق إسلامي شامل يهدف لمساعدتك على الحفاظ على أورادك وأذكارك بطريقة عصرية وذكية.</p>
+            </div>
+            
+            <div class="footer-links-group">
+                <h4 data-i18n="footerLinksTitle">روابط هامة</h4>
+                <ul>
+                    <li><a href="privacy-policy.html" data-i18n="footerPrivacy">سياسة الخصوصية</a></li>
+                    <li><a href="delete-account.html" data-i18n="footerDelete">طلب حذف الحساب</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-group">
+                <h4 data-i18n="footerContactTitle">تواصل معنا</h4>
+                <ul>
+                    <li><a href="contact.html" data-i18n="footerContact">اتصل بنا</a></li>
+                    <li><a href="suggestions.html" data-i18n="footerSuggestions">تقديم المقترحات</a></li>
+                    <li><a href="contact.html" style="color: var(--primary); font-weight: 700; direction: ltr; display: inline-block;">tariqaleiman@gmail.com</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p class="copyright" data-i18n="footerCopy">جميع الحقوق محفوظة &copy; 2026 تطبيق المسبحة</p>
+        </div>
+    </footer>
+
+    <!-- Translations & Logic -->
+    <script>
+        const translations = {
+            ar: {
+                pageTitle: "تطبيق المسبحة - رفيقك لذكر الله",
+                appName: "المسبحة",
+                heroBadge: "<i class='fa-solid fa-star'></i> رفيقك الدائم لذكر الله",
+                heroTitle: "لا تغفل عن <span>ذكر الله</span>",
+                heroDesc: "تطبيق المسبحة الشامل يوفر لك تجربة إيمانية متكاملة تشمل الأوراد اليومية، التسبيح الصوتي الذكي، ومتابعة دقيقة لإنجازاتك اليومية لتبقى دائماً على اتصال بخالقك.",
+                
+                f1Title: "التسبيح الصوتي الذكي",
+                f1Desc: "سبّح بصوتك دون الحاجة للمس الشاشة. يتعرف التطبيق على الأذكار ويقوم بحسابها تلقائياً أثناء انشغال يديك سواء أثناء القيادة أو أداء أعمالك اليومية.",
+                
+                f2Title: "الورد اليومي",
+                f2Desc: "حافظ على أذكار الصباح، المساء، والنوم مع متابعة مستمرة لتقدمك. يوفر لك التطبيق قراءة مريحة للعين مع إمكانية تحديد أهداف يومية.",
+                
+                f3Title: "الإحصائيات والسجل",
+                f3Desc: "تابع أداءك اليومي وأطول سلسلة استمرار (Streak) في الذكر. يقدم لك التطبيق رسوماً بيانية تفصيلية توضح حصاد أعمالك وتطورك.",
+                
+                f4Title: "المزامنة السحابية",
+                f4Desc: "حفظ بياناتك وإنجازاتك وسجلات التسبيح بأمان تام سحابياً. يمكنك الرجوع إليها في أي وقت ومن أي جهاز ولن تفقد أورادك أبداً.",
+                
+                f5Title: "نظام الإنجازات",
+                f5Desc: "شارات ومستويات تحفزك على الاستمرار والتنافس في الخير. احصل على شارات مميزة مثل \"مليونية النور\" عند وصولك لأهدافك.",
+                
+                f6Title: "التخصيص والوضع الداكن",
+                f6Desc: "أشكال وخامات متعددة للمسبحة الكلاسيكية لتناسب ذوقك. بالإضافة لدعم كامل للوضع الليلي المريح للعين في التطبيق بأكمله.",
+                
+                reviewsTitle: "قالوا عن التطبيق",
+                reviewsDesc: "نفخر بخدمة آلاف المستخدمين يومياً ومساعدتهم في الحفاظ على أورادهم.",
+                rev1Text: "\"تطبيق رائع جداً ومفيد! ميزة التسبيح الصوتي وفرت علي الكثير أثناء القيادة. جعله الله في ميزان حسناتكم.\"",
+                rev2Text: "\"تصميم مريح للعين وخاصة الوضع الليلي. الإحصائيات والإنجازات تشجع جداً على الاستمرار في الذكر.\"",
+                rev3Text: "\"أفضل تطبيق مسبحة استخدمته. بسيط، لا يستهلك البطارية، وميزة المزامنة تضمن عدم ضياع الأذكار.\"",
+                
+                ctaTitle: "ابدأ رحلتك الإيمانية الآن",
+                ctaDesc: "انضم للآلاف ممن يحافظون على أورادهم اليومية مع تطبيق المسبحة الشامل.",
+                
+                footerBrandDesc: "رفيقك الدائم لذكر الله. تطبيق إسلامي شامل يهدف لمساعدتك على الحفاظ على أورادك وأذكارك بطريقة عصرية وذكية.",
+                footerLinksTitle: "روابط هامة",
+                footerPrivacy: "سياسة الخصوصية",
+                footerDelete: "طلب حذف الحساب",
+                footerContactTitle: "تواصل معنا",
+                footerContact: "اتصل بنا",
+                footerSuggestions: "تقديم المقترحات",
+                footerCopy: "جميع الحقوق محفوظة &copy; 2026 تطبيق المسبحة"
+            },
+            en: {
+                pageTitle: "Almsbha App - Your Dhikr Companion",
+                appName: "Almsbha",
+                heroBadge: "<i class='fa-solid fa-star'></i> Your Daily Companion for Dhikr",
+                heroTitle: "Never Forget to <span>Remember Allah</span>",
+                heroDesc: "The comprehensive Almsbha app offers an integrated spiritual experience including daily Awrad, smart Voice Tasbih, and accurate tracking of your daily achievements to keep you connected with your Creator.",
+                
+                f1Title: "Smart Voice Tasbih",
+                f1Desc: "Do Tasbih using your voice without touching the screen. The app recognizes your words and counts automatically when your hands are busy, perfect for driving or working.",
+                
+                f2Title: "Daily Wird",
+                f2Desc: "Maintain your Morning, Evening, and Sleep Dhikr with continuous progress tracking. The app provides comfortable reading with the ability to set daily goals.",
+                
+                f3Title: "Statistics & Record",
+                f3Desc: "Track your daily performance and your longest streak in Dhikr. The app provides detailed charts showing your spiritual harvest and development.",
+                
+                f4Title: "Cloud Sync",
+                f4Desc: "Securely save your data, achievements, and Tasbih records in the cloud. You can access them anytime, from any device, and you'll never lose your Awrad.",
+                
+                f5Title: "Achievements System",
+                f5Desc: "Badges and levels motivate you to continue and compete in doing good. Earn special badges like the \"Million of Light\" when you reach your goals.",
+                
+                f6Title: "Customization & Dark Mode",
+                f6Desc: "Multiple shapes and materials for the classic tasbih to suit your taste. In addition to full support for a comfortable Dark Mode throughout the app.",
+                
+                reviewsTitle: "User Testimonials",
+                reviewsDesc: "We are proud to serve thousands of users daily, helping them maintain their Awrad.",
+                rev1Text: "\"An amazing and useful app! The Voice Tasbih feature saved me so much effort while driving. May Allah reward you.\"",
+                rev2Text: "\"Eye-pleasing design, especially the dark mode. The statistics and achievements strongly encourage consistency.\"",
+                rev3Text: "\"The best Tasbih app I've used. Simple, battery-friendly, and the sync feature ensures no Dhikr is lost.\"",
+                
+                ctaTitle: "Start Your Spiritual Journey Now",
+                ctaDesc: "Join thousands who maintain their daily Awrad with the comprehensive Almsbha app.",
+                
+                footerBrandDesc: "Your daily companion for remembering Allah. A comprehensive Islamic app designed to help you maintain your Awrad in a modern, smart way.",
+                footerLinksTitle: "Important Links",
+                footerPrivacy: "Privacy Policy",
+                footerDelete: "Request Account Deletion",
+                footerContactTitle: "Contact Us",
+                footerContact: "Contact Us",
+                footerSuggestions: "Submit Suggestions",
+                footerCopy: "All rights reserved &copy; 2026 Almsbha App"
+            }
+        };
+
+        let currentLang = 'ar';
+        let currentTheme = 'light';
+
+        function init() {
+            const sysLang = navigator.language.slice(0, 2);
+            if (sysLang === 'ar' || sysLang === 'en') {
+                currentLang = sysLang;
+            } else {
+                currentLang = 'en';
+            }
+            
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                currentTheme = 'dark';
+            }
+
+            const savedLang = localStorage.getItem('almsbha_lang');
+            if (savedLang) currentLang = savedLang;
+            
+            const savedTheme = localStorage.getItem('almsbha_theme');
+            if (savedTheme) currentTheme = savedTheme;
+
+            applyLanguage(currentLang);
+            applyTheme(currentTheme);
+
+            document.getElementById('langToggle').addEventListener('click', () => {
+                currentLang = currentLang === 'ar' ? 'en' : 'ar';
+                localStorage.setItem('almsbha_lang', currentLang);
+                applyLanguage(currentLang);
+            });
+
+            document.getElementById('themeToggle').addEventListener('click', () => {
+                currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+                localStorage.setItem('almsbha_theme', currentTheme);
+                applyTheme(currentTheme);
+            });
+        }
+
+        function applyLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    if (el.tagName === 'TITLE') {
+                        document.title = translations[lang][key];
+                    } else {
+                        el.innerHTML = translations[lang][key];
+                    }
+                }
+            });
+
+            const langBtn = document.getElementById('langToggle');
+            langBtn.innerHTML = lang === 'ar' ? '<span style="font-size: 1rem; font-weight: bold;">EN</span>' : '<span style="font-size: 1rem; font-weight: bold;">ع</span>';
+        }
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            const themeBtn = document.getElementById('themeToggle');
+            themeBtn.innerHTML = theme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
