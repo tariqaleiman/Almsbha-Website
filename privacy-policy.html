@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="pageTitle">سياسة الخصوصية - تطبيق المسبحة</title>
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            /* Light Theme Variables */
             --primary: #B24C33;
             --primary-light: #E77A5D;
             --primary-dark: #8C3A25;
@@ -26,7 +25,6 @@
         }
 
         [data-theme="dark"] {
-            /* Dark Theme Variables */
             --primary: #E77A5D;
             --primary-light: #FF9B82;
             --primary-dark: #B24C33;
@@ -59,7 +57,6 @@
             font-family: var(--font-en);
         }
 
-        /* Navigation Bar */
         .navbar {
             position: fixed;
             top: 0;
@@ -79,7 +76,7 @@
 
         .brand {
             font-weight: 800;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--primary);
             display: flex;
             align-items: center;
@@ -113,7 +110,6 @@
             transform: translateY(-2px);
         }
 
-        /* Header Section */
         .header {
             background: linear-gradient(135deg, var(--primary-dark), var(--primary));
             color: var(--header-text);
@@ -124,7 +120,7 @@
 
         .header h1 {
             margin: 0;
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 800;
             letter-spacing: -0.5px;
         }
@@ -134,12 +130,11 @@
             color: rgba(255, 255, 255, 0.95);
             font-size: 1.2rem;
             font-weight: 600;
-            max-width: 600px;
+            max-width: 650px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        /* Main Content Container */
         .container {
             max-width: 900px;
             margin: -40px auto 60px;
@@ -151,6 +146,35 @@
             z-index: 10;
         }
 
+        .app-meta-card {
+            background: rgba(178, 76, 51, 0.06);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .app-meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .app-meta-item .label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .app-meta-item .value {
+            font-size: 1.05rem;
+            color: var(--primary);
+            font-weight: 700;
+            word-break: break-all;
+        }
+
         .last-updated {
             display: inline-block;
             background: rgba(178, 76, 51, 0.1);
@@ -159,14 +183,14 @@
             border-radius: 20px;
             font-weight: 600;
             font-size: 0.9rem;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         h2 {
             color: var(--primary);
-            font-size: 1.8rem;
-            margin-top: 40px;
-            margin-bottom: 20px;
+            font-size: 1.6rem;
+            margin-top: 35px;
+            margin-bottom: 15px;
             font-weight: 800;
             display: flex;
             align-items: center;
@@ -174,15 +198,15 @@
         }
         
         h2 i {
-            font-size: 1.4rem;
-            opacity: 0.8;
+            font-size: 1.3rem;
+            opacity: 0.85;
         }
 
         h3 {
             color: var(--text-primary);
-            font-size: 1.3rem;
-            margin-top: 30px;
-            margin-bottom: 15px;
+            font-size: 1.25rem;
+            margin-top: 25px;
+            margin-bottom: 12px;
             font-weight: 700;
         }
 
@@ -193,13 +217,13 @@
         }
 
         ul {
-            padding-inline-start: 20px;
+            padding-inline-start: 22px;
             color: var(--text-secondary);
         }
 
         li {
             margin-bottom: 12px;
-            font-size: 1.05rem;
+            font-size: 1.02rem;
         }
 
         li strong {
@@ -209,10 +233,10 @@
         .highlight-box {
             background-color: rgba(178, 76, 51, 0.05);
             border-inline-start: 4px solid var(--primary);
-            padding: 25px;
+            padding: 22px;
             border-radius: 12px;
-            margin: 30px 0;
-            font-size: 1.1rem;
+            margin: 25px 0;
+            font-size: 1.05rem;
             color: var(--text-primary);
         }
 
@@ -237,7 +261,6 @@
             color: white;
         }
 
-        /* Footer */
         .footer {
             background: var(--surface);
             border-top: 1px solid var(--border);
@@ -269,7 +292,6 @@
             font-size: 0.95rem;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .container {
                 margin: -20px 15px 40px;
@@ -284,7 +306,10 @@
                 font-size: 2.2rem;
             }
             h2 {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
+            }
+            .app-meta-card {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -316,73 +341,95 @@
     <!-- Main Content -->
     <main class="container">
         
+        <!-- App & Developer Identification Card (Essential for Google Play Compliance) -->
+        <div class="app-meta-card">
+            <div class="app-meta-item">
+                <span class="label" data-i18n="metaAppLabel">اسم التطبيق (App Name):</span>
+                <span class="value" data-i18n="metaAppName">المسبحة: تسبيح بالصوت، وأذكار (Misbaha)</span>
+            </div>
+            <div class="app-meta-item">
+                <span class="label" data-i18n="metaPackageLabel">معرف الحزمة (Package ID):</span>
+                <span class="value">com.M.H.Team.Almsbha.App</span>
+            </div>
+            <div class="app-meta-item">
+                <span class="label" data-i18n="metaDevLabel">المطور (Developer):</span>
+                <span class="value" data-i18n="metaDevName">Tariq Aleiman / Mohamed Ibrahim</span>
+            </div>
+            <div class="app-meta-item">
+                <span class="label" data-i18n="metaEmailLabel">البريد الإلكتروني (Contact Email):</span>
+                <span class="value">tariqaleiman@gmail.com</span>
+            </div>
+        </div>
+
         <div class="last-updated">
-            <i class="fa-regular fa-calendar-check"></i> <span data-i18n="lastUpdated">آخر تحديث: 28 يوليو 2026</span>
+            <i class="fa-regular fa-calendar-check"></i> <span data-i18n="lastUpdated">آخر تحديث: 30 أغسطس 2026</span>
         </div>
 
         <div class="highlight-box">
             <strong data-i18n="introTitle">مقدمة:</strong>
-            <span data-i18n="introDesc">نحن في تطبيق "المسبحة" نولي خصوصيتك أهمية بالغة. تشرح هذه السياسة بوضوح وشفافية كيفية جمعنا للمعلومات، واستخدامها، وحمايتها عند استخدامك لتطبيقنا والخدمات المرتبطة به. نلتزم بالامتثال لقوانين حماية البيانات العالمية بما في ذلك اللائحة العامة لحماية البيانات (GDPR) وقانون حماية خصوصية الأطفال (COPPA).</span>
+            <span data-i18n="introDesc">تنطبق سياسة الخصوصية هذه على تطبيق الهاتف المحمول "المسبحة" (المعرف البرمجي: com.M.H.Team.Almsbha.App) والمطور بواسطة "Tariq Aleiman". نحن نولي خصوصيتك أهمية قصوى ونوضح هنا بالتفصيل وبكل شفافية طبيعة البيانات التي يتم جمعها أو معالجتها وكيفية حمايتها، مع الالتزام الكامل بسياسات متجر Google Play وقوانين حماية البيانات العامة (GDPR) وقانون حماية خصوصية الأطفال على الإنترنت (COPPA).</span>
         </div>
 
-        <h2 data-i18n="sec1Title"><i class="fa-solid fa-database"></i> 1. البيانات التي نجمعها</h2>
-        <p data-i18n="sec1Desc">لتقديم أفضل تجربة ممكنة، نقوم بجمع بعض البيانات عند استخدامك للتطبيق:</p>
+        <h2 data-i18n="sec1Title"><i class="fa-solid fa-database"></i> 1. البيانات التي نجمعها وكيفية جمعها</h2>
+        <p data-i18n="sec1Desc">نحن نجمع الحد الأدنى من البيانات اللازمة لتشغيل وتطوير خدمات التطبيق:</p>
         <ul>
-            <li><strong data-i18n="sec1Item1Title">المعلومات الشخصية وحسابات المستخدمين:</strong> <span data-i18n="sec1Item1Desc">عند التسجيل باستخدام حساب Google أو البريد الإلكتروني لإنشاء حساب في التطبيق، نجمع اسمك، عنوان بريدك الإلكتروني، وصورة ملفك الشخصي. هذا ضروري لإنشاء حسابك وتوفير ميزة المزامنة السحابية.</span></li>
-            <li><strong data-i18n="sec1Item2Title">بيانات الاستخدام وقواعد البيانات (Firebase):</strong> <span data-i18n="sec1Item2Desc">نقوم بتخزين سجلات الأذكار والتسبيح والأهداف التي تنجزها باستخدام قواعد بيانات (Firebase Realtime Database / Firestore) لضمان مزامنتها بين أجهزتك وعدم ضياعها.</span></li>
-            <li><strong data-i18n="sec1Item3Title">بيانات الجهاز والتحليلات (Firebase Analytics):</strong> <span data-i18n="sec1Item3Desc">نجمع معلومات غير محددة للهوية مثل نوع الجهاز، إصدار نظام التشغيل، وإحصائيات الاستخدام لتحسين أداء التطبيق وحل المشاكل التقنية عبر خدمة Firebase Analytics.</span></li>
+            <li><strong data-i18n="sec1Item1Title">معلومات الحساب والمصادقة:</strong> <span data-i18n="sec1Item1Desc">عند تسجيل الدخول باستخدام حساب Google أو البريد الإلكتروني، نقوم بحفظ المعرف الفريد والاسم والبريد الإلكتروني عبر خدمة Firebase Authentication لإنشاء ملفك الشخصي ومزامنة تقدمك السحابي عبر أجهزتك المختلفة.</span></li>
+            <li><strong data-i18n="sec1Item2Title">بيانات التسبيح والأوراد اليومية:</strong> <span data-i18n="sec1Item2Desc">نقوم بحفظ إحصائيات التسبيح، الأوراد اليومية المنجزة، والتخصيصات في قواعد بيانات سحابية مشفرة (Firebase Firestore & Realtime Database) لضمان عدم ضياع تقدمك عند تغيير الجهاز.</span></li>
+            <li><strong data-i18n="sec1Item3Title">بيانات التشخيص والأداء (Crashlytics & Analytics):</strong> <span data-i18n="sec1Item3Desc">نجمع معلومات تقنية مجهولة الهوية مثل نوع الجهاز وإصدار النظام وتقارير الأعطال البرمجية لتحسين استقرار التطبيق وحل الأخطاء.</span></li>
         </ul>
 
-        <h2 data-i18n="sec2Title"><i class="fa-solid fa-gears"></i> 2. كيف نستخدم معلوماتك؟</h2>
-        <p data-i18n="sec2Desc">نستخدم المعلومات المجمعة للأغراض الأساسية التالية:</p>
+        <h2 data-i18n="secPermissionsTitle"><i class="fa-solid fa-key"></i> 2. الأذونات الحساسة والغرض منها (App Permissions)</h2>
+        <p data-i18n="secPermissionsDesc">يطلب التطبيق بعض الأذونات لأداء وظائفه الأساسية فقط:</p>
         <ul>
-            <li data-i18n="sec2Item1">إنشاء وإدارة حسابك وتوفير الخدمات الأساسية للتطبيق.</li>
-            <li data-i18n="sec2Item2">مزامنة بيانات التسبيح والأوراد الخاصة بك سحابياً لحفظها.</li>
-            <li data-i18n="sec2Item3">تحليل أداء التطبيق وتحسين واجهة المستخدم وتجربته.</li>
-            <li data-i18n="sec2Item4">التواصل معك بخصوص أي تحديثات هامة أو الدعم الفني.</li>
-            <li data-i18n="sec2Item5">إدارة الاشتراكات المميزة (Premium) وتفعيل المزايا الخاصة بها وربطها بحسابك.</li>
+            <li><strong data-i18n="permAudioTitle">إذن تسجيل الصوت (RECORD_AUDIO):</strong> <span data-i18n="permAudioDesc">يُستخدم حصرياً لميزة "التسبيح الصوتي". يتم التعرف على الصوت محلياً على جهازك بواسطة محرك Vosk المدمج دون تسجيل الصوت أو إرساله أو تخزينه على أي خوادم خارجية (معالجة محلية On-device فقط).</span></li>
+            <li><strong data-i18n="permAlarmTitle">إذن المنبهات الدقيقة (SCHEDULE_EXACT_ALARM):</strong> <span data-i18n="permAlarmDesc">يُستخدم لتنبيهك بدقة في مواعيد الأوراد اليومية وأذكار الصباح والمساء والجمعة التي تقوم بجدولتها بنفسك.</span></li>
+            <li><strong data-i18n="permFgTitle">الخدمات في المقدمة (FOREGROUND_SERVICE_DATA_SYNC):</strong> <span data-i18n="permFgDesc">تُستخدم لعرض شريط تقدم مستمر عند تنزيل وفك ضغط حزمة نموذج التعرف الصوتي (Vosk Engine) في الخلفية دون انقطاع، وتتوقف الخدمة فور اكتمال التنزيل.</span></li>
+            <li><strong data-i18n="permNotifTitle">إذن الإشعارات (POST_NOTIFICATIONS):</strong> <span data-i18n="permNotifDesc">لإرسال تذكيرات الأذكار والرسائل الإدارية والتحديثات الهامة. يمكنك تعطيل الإشعارات في أي وقت من إعدادات التطبيق أو الهاتف.</span></li>
         </ul>
 
-        <h2 data-i18n="sec3Title"><i class="fa-solid fa-share-nodes"></i> 3. مشاركة البيانات وخدمات الطرف الثالث</h2>
-        <p data-i18n="sec3Desc">نحن لا نبيع أو نؤجر معلوماتك الشخصية. يتم مشاركة بعض البيانات المجهولة أو الضرورية فقط مع مزودي الخدمات الموثوقين المدمجين في التطبيق:</p>
+        <h2 data-i18n="sec2Title"><i class="fa-solid fa-gears"></i> 3. كيف نستخدم معلوماتك؟</h2>
+        <p data-i18n="sec2Desc">نستخدم المعلومات للأغراض المحددة التالية فقط:</p>
         <ul>
-            <li><strong data-i18n="sec3Item1Title">Google Firebase:</strong> <span data-i18n="sec3Item1Desc">تُستخدم خدمات فايربيس للاستضافة، قواعد البيانات (Realtime DB/Firestore)، إنشاء الحسابات والمصادقة (Authentication)، والتحليلات (Analytics).</span></li>
-            <li><strong data-i18n="sec3Item2Title">Google AdMob (الإعلانات):</strong> <span data-i18n="sec3Item2Desc">في النسخة المجانية، نستخدم AdMob لعرض الإعلانات. قد يقوم AdMob باستخدام ملفات تعريف الارتباط (Cookies) أو معرفات الإعلانات لتخصيص الإعلانات وفقاً لاهتماماتك. (ملاحظة: لا يتم عرض أي إعلانات في نسخة الاشتراكات المميزة Premium).</span></li>
-            <li><strong data-i18n="sec3Item3Title">Google Play Billing (الاشتراكات):</strong> <span data-i18n="sec3Item3Desc">تُستخدم لمعالجة عمليات الشراء والاشتراكات داخل التطبيق. نحن لا نعالج أو نخزن بيانات بطاقتك الائتمانية إطلاقاً على خوادمنا.</span></li>
+            <li data-i18n="sec2Item1">إنشاء الحساب وتوثيق الدخول الآمن.</li>
+            <li data-i18n="sec2Item2">مزامنة سجلات التسبيح والأذكار سحابياً بين أجهزتك.</li>
+            <li data-i18n="sec2Item3">إدارة الاشتراكات المميزة (Premium) وتفعيل المزايا المتقدمة وإزالة الإعلانات.</li>
+            <li data-i18n="sec2Item4">متابعة استقرار التطبيق وتصحيح الأعطال وتحسين الأداء.</li>
         </ul>
 
-        <h2 data-i18n="sec4Title"><i class="fa-solid fa-cookie-bite"></i> 4. ملفات تعريف الارتباط (Cookies) والتقنيات المشابهة</h2>
-        <p data-i18n="sec4Desc">قد نستخدم نحن أو شركاؤنا (مثل AdMob و Firebase) تقنيات تتبع مشابهة لملفات تعريف الارتباط أو معرفات أجهزة الجوال لجمع معلومات حول تفاعلك مع التطبيق والإعلانات. يمكنك إدارة تفضيلات الإعلانات الخاصة بك من خلال إعدادات جهازك الذكي (مثال: إيقاف تخصيص الإعلانات عبر إعدادات الخصوصية في هاتفك).</p>
+        <h2 data-i18n="sec3Title"><i class="fa-solid fa-share-nodes"></i> 4. مشاركة البيانات وخدمات الطرف الثالث</h2>
+        <p data-i18n="sec3Desc">نحن لا نبيع بياناتك لأي طرف. نتعامل فقط مع خدمات موثوقة تابعة لشركة Google:</p>
+        <ul>
+            <li><strong data-i18n="sec3Item1Title">Google Firebase:</strong> <span data-i18n="sec3Item1Desc">لإدارة قواعد البيانات السحابية والمصادقة والتحليلات الآمنة.</span></li>
+            <li><strong data-i18n="sec3Item2Title">Google AdMob:</strong> <span data-i18n="sec3Item2Desc">لعرض الإعلانات للمستخدمين في الخطة المجانية. يتم كتم صوت الإعلانات تلقائياً، وتُلغى الإعلانات تماماً لمشتركي باقة Premium.</span></li>
+            <li><strong data-i18n="sec3Item3Title">Google Play In-App Billing:</strong> <span data-i18n="sec3Item3Desc">لمعالجة الاشتراكات وعمليات الشراء بأعلى درجات الأمان المصرفي عبر نظام جوجل دون وصول التطبيق لأي بيانات دفع.</span></li>
+        </ul>
 
         <h2 data-i18n="sec5Title"><i class="fa-solid fa-child-reaching"></i> 5. خصوصية الأطفال (COPPA)</h2>
-        <p data-i18n="sec5Desc">خدماتنا موجهة للجمهور العام وتطبيقنا لا يجمع عن قصد أي معلومات تعريف شخصية من الأطفال دون سن 13 عاماً. إذا علمنا أن طفلاً دون سن 13 عاماً قد زودنا بمعلومات شخصية قابلة للتحديد، فسنقوم بحذفها من خوادمنا فوراً.</p>
+        <p data-i18n="sec5Desc">التطبيق موجه للجمهور العام وهو آمن لجميع الأعمار. نحن لا نجمع عن قصد أي بيانات شخصية من الأطفال دون سن 13 عاماً، ومحتوى التطبيق مناسب للجميع.</p>
 
-        <h2 data-i18n="sec6Title"><i class="fa-solid fa-shield-halved"></i> 6. حقوق المستخدم وحذف البيانات</h2>
-        <p data-i18n="sec6Desc">بموجب قوانين حماية البيانات (مثل GDPR)، لك الحق في الوصول إلى بياناتك أو تعديلها أو طلب مسحها تماماً. نحتفظ ببياناتك طالما كان حسابك نشطاً لتقديم الخدمات المطلوبة.</p>
-        <p data-i18n="sec6Desc2">لكامل الحق في طلب حذف حسابك، ومسح كافة البيانات وسجلات التسبيح المحفوظة نهائياً من خوادمنا، يرجى استخدام نموذج الحذف المخصص أسفله:</p>
+        <h2 data-i18n="sec6Title"><i class="fa-solid fa-shield-halved"></i> 6. حذف الحساب والبيانات (Data Deletion Policy)</h2>
+        <p data-i18n="sec6Desc">التزاماً بسياسات Google Play وحقك في الخصوصية، يمكنك حذف حسابك وكافة بياناتك وسجلاتك نهائياً في أي وقت:</p>
+        <p data-i18n="sec6Desc2">يمكنك إجراء الحذف مباشرة من داخل التطبيق من خلال: <strong>الملف الشخصي > حذف الحساب</strong>، أو عبر النموذج الإلكتروني عبر الرابط التالي:</p>
         <a href="delete-account.html" class="btn-link" id="deleteAccountLink">
-            <i class="fa-solid fa-user-xmark"></i> <span data-i18n="btnDeleteForm">الانتقال إلى نموذج حذف الحساب</span>
+            <i class="fa-solid fa-user-xmark"></i> <span data-i18n="btnDeleteForm">الانتقال إلى نموذج حذف الحساب وبياناته</span>
         </a>
 
-        <h2 data-i18n="sec7Title"><i class="fa-solid fa-file-signature"></i> 7. التغييرات على هذه السياسة</h2>
-        <p data-i18n="sec7Desc">قد نقوم بتحديث سياسة الخصوصية من وقت لآخر. سنقوم بإعلامك بأي تغييرات جوهرية عن طريق تحديث "تاريخ آخر تحديث" أعلى هذه الصفحة، أو عبر إشعار داخل التطبيق.</p>
-
-        <h2 data-i18n="sec8Title"><i class="fa-solid fa-envelope"></i> 8. تواصل معنا</h2>
-        <p data-i18n="sec8Desc">إذا كان لديك أي أسئلة، استفسارات، أو طلبات تتعلق بهذه السياسة أو ببياناتك، يرجى التواصل معنا عبر البريد الإلكتروني:</p>
-        <a href="contact.html" style="color: var(--primary); font-weight: 700; font-size: 1.1rem;">tariqaleiman@gmail.com</a>
+        <h2 data-i18n="sec8Title"><i class="fa-solid fa-envelope"></i> 7. تواصل معنا</h2>
+        <p data-i18n="sec8Desc">إذا كانت لديك أي استفسارات حول سياسة الخصوصية أو بياناتك، يمكنك مراسلة المطور مباشرة:</p>
+        <p><strong>المطور:</strong> Tariq Aleiman</p>
+        <p><strong>البريد الإلكتروني:</strong> <a href="mailto:tariqaleiman@gmail.com" style="color: var(--primary); font-weight: 700;">tariqaleiman@gmail.com</a></p>
 
     </main>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-links">
-            <a href="#" data-i18n="footerHome">الرئيسية</a>
             <a href="privacy-policy.html" data-i18n="footerPrivacy">سياسة الخصوصية</a>
             <a href="delete-account.html" data-i18n="footerDelete">طلب حذف الحساب</a>
             <a href="contact.html" data-i18n="footerContact">تواصل معنا</a>
             <a href="suggestions.html" data-i18n="footerSuggestions">المقترحات</a>
         </div>
-        <p class="copyright" data-i18n="footerCopy">جميع الحقوق محفوظة &copy; 2026 تطبيق المسبحة</p>
+        <p class="copyright" data-i18n="footerCopy">جميع الحقوق محفوظة &copy; 2026 تطبيق المسبحة (Misbaha)</p>
     </footer>
 
     <!-- Translations & Logic -->
@@ -393,122 +440,138 @@
                 appName: "المسبحة",
                 headerTitle: "سياسة الخصوصية",
                 headerDesc: "نلتزم بحماية بياناتك وخصوصيتك بأعلى معايير الأمان والشفافية.",
-                lastUpdated: "آخر تحديث: 28 يوليو 2026",
+                metaAppLabel: "اسم التطبيق (App Name):",
+                metaAppName: "المسبحة: تسبيح بالصوت، وأذكار (Misbaha)",
+                metaPackageLabel: "معرف الحزمة (Package ID):",
+                metaDevLabel: "المطور (Developer):",
+                metaDevName: "Tariq Aleiman / Mohamed Ibrahim",
+                metaEmailLabel: "البريد الإلكتروني (Contact Email):",
+                lastUpdated: "آخر تحديث: 30 أغسطس 2026",
                 introTitle: "مقدمة:",
-                introDesc: "نحن في تطبيق \"المسبحة\" نولي خصوصيتك أهمية بالغة. تشرح هذه السياسة بوضوح وشفافية كيفية جمعنا للمعلومات، واستخدامها، وحمايتها عند استخدامك لتطبيقنا والخدمات المرتبطة به. نلتزم بالامتثال لقوانين حماية البيانات العالمية بما في ذلك اللائحة العامة لحماية البيانات (GDPR) وقانون حماية خصوصية الأطفال (COPPA).",
-                sec1Title: "1. البيانات التي نجمعها",
-                sec1Desc: "لتقديم أفضل تجربة ممكنة، نقوم بجمع بعض البيانات عند استخدامك للتطبيق:",
-                sec1Item1Title: "المعلومات الشخصية وحسابات المستخدمين:",
-                sec1Item1Desc: "عند التسجيل باستخدام حساب Google أو البريد الإلكتروني لإنشاء حساب في التطبيق، نجمع اسمك، عنوان بريدك الإلكتروني، وصورة ملفك الشخصي. هذا ضروري لإنشاء حسابك وتوفير ميزة المزامنة السحابية.",
-                sec1Item2Title: "بيانات الاستخدام وقواعد البيانات (Firebase):",
-                sec1Item2Desc: "نقوم بتخزين سجلات الأذكار والتسبيح والأهداف التي تنجزها باستخدام قواعد بيانات (Firebase Realtime Database / Firestore) لضمان مزامنتها بين أجهزتك وعدم ضياعها.",
-                sec1Item3Title: "بيانات الجهاز والتحليلات (Firebase Analytics):",
-                sec1Item3Desc: "نجمع معلومات غير محددة للهوية مثل نوع الجهاز، إصدار نظام التشغيل، وإحصائيات الاستخدام لتحسين أداء التطبيق وحل المشاكل التقنية عبر خدمة Firebase Analytics.",
-                sec2Title: "2. كيف نستخدم معلوماتك؟",
-                sec2Desc: "نستخدم المعلومات المجمعة للأغراض الأساسية التالية:",
-                sec2Item1: "إنشاء وإدارة حسابك وتوفير الخدمات الأساسية للتطبيق.",
-                sec2Item2: "مزامنة بيانات التسبيح والأوراد الخاصة بك سحابياً لحفظها.",
-                sec2Item3: "تحليل أداء التطبيق وتحسين واجهة المستخدم وتجربته.",
-                sec2Item4: "التواصل معك بخصوص أي تحديثات هامة أو الدعم الفني.",
-                sec2Item5: "إدارة الاشتراكات المميزة (Premium) وتفعيل المزايا الخاصة بها وربطها بحسابك.",
-                sec3Title: "3. مشاركة البيانات وخدمات الطرف الثالث",
-                sec3Desc: "نحن لا نبيع أو نؤجر معلوماتك الشخصية. يتم مشاركة بعض البيانات المجهولة أو الضرورية فقط مع مزودي الخدمات الموثوقين المدمجين في التطبيق:",
+                introDesc: "تنطبق سياسة الخصوصية هذه على تطبيق الهاتف المحمول \"المسبحة\" (المعرف البرمجي: com.M.H.Team.Almsbha.App) والمطور بواسطة \"Tariq Aleiman\". نحن نولي خصوصيتك أهمية قصوى ونوضح هنا بالتفصيل وبكل شفافية طبيعة البيانات التي يتم جمعها أو معالجتها وكيفية حمايتها، مع الالتزام الكامل بسياسات متجر Google Play وقوانين حماية البيانات العامة (GDPR) وقانون حماية خصوصية الأطفال على الإنترنت (COPPA).",
+                sec1Title: "1. البيانات التي نجمعها وكيفية جمعها",
+                sec1Desc: "نحن نجمع الحد الأدنى من البيانات اللازمة لتشغيل وتطوير خدمات التطبيق:",
+                sec1Item1Title: "معلومات الحساب والمصادقة:",
+                sec1Item1Desc: "عند تسجيل الدخول باستخدام حساب Google أو البريد الإلكتروني، نقوم بحفظ المعرف الفريد والاسم والبريد الإلكتروني عبر خدمة Firebase Authentication لإنشاء ملفك الشخصي ومزامنة تقدمك السحابي عبر أجهزتك المختلفة.",
+                sec1Item2Title: "بيانات التسبيح والأوراد اليومية:",
+                sec1Item2Desc: "نقوم بحفظ إحصائيات التسبيح، الأوراد اليومية المنجزة، والتخصيصات في قواعد بيانات سحابية مشفرة (Firebase Firestore & Realtime Database) لضمان عدم ضياع تقدمك عند تغيير الجهاز.",
+                sec1Item3Title: "بيانات التشخيص والأداء (Crashlytics & Analytics):",
+                sec1Item3Desc: "نجمع معلومات تقنية مجهولة الهوية مثل نوع الجهاز وإصدار النظام وتقارير الأعطال البرمجية لتحسين استقرار التطبيق وحل الأخطاء.",
+                secPermissionsTitle: "2. الأذونات الحساسة والغرض منها (App Permissions)",
+                secPermissionsDesc: "يطلب التطبيق بعض الأذونات لأداء وظائفه الأساسية فقط:",
+                permAudioTitle: "إذن تسجيل الصوت (RECORD_AUDIO):",
+                permAudioDesc: "يُستخدم حصرياً لميزة \"التسبيح الصوتي\". يتم التعرف على الصوت محلياً على جهازك بواسطة محرك Vosk المدمج دون تسجيل الصوت أو إرساله أو تخزينه على أي خوادم خارجية (معالجة محلية On-device فقط).",
+                permAlarmTitle: "إذن المنبهات الدقيقة (SCHEDULE_EXACT_ALARM):",
+                permAlarmDesc: "يُستخدم لتنبيهك بدقة في مواعيد الأوراد اليومية وأذكار الصباح والمساء والجمعة التي تقوم بجدولتها بنفسك.",
+                permFgTitle: "الخدمات في المقدمة (FOREGROUND_SERVICE_DATA_SYNC):",
+                permFgDesc: "تُستخدم لعرض شريط تقدم مستمر عند تنزيل وفك ضغط حزمة نموذج التعرف الصوتي (Vosk Engine) في الخلفية دون انقطاع، وتتوقف الخدمة فور اكتمال التنزيل.",
+                permNotifTitle: "إذن الإشعارات (POST_NOTIFICATIONS):",
+                permNotifDesc: "لإرسال تذكيرات الأذكار والرسائل الإدارية والتحديثات الهامة. يمكنك تعطيل الإشعارات في أي وقت من إعدادات التطبيق أو الهاتف.",
+                sec2Title: "3. كيف نستخدم معلوماتك؟",
+                sec2Desc: "نستخدم المعلومات للأغراض المحددة التالية فقط:",
+                sec2Item1: "إنشاء الحساب وتوثيق الدخول الآمن.",
+                sec2Item2: "مزامنة سجلات التسبيح والأذكار سحابياً بين أجهزتك.",
+                sec2Item3: "إدارة الاشتراكات المميزة (Premium) وتفعيل المزايا المتقدمة وإزالة الإعلانات.",
+                sec2Item4: "متابعة استقرار التطبيق وتصحيح الأعطال وتحسين الأداء.",
+                sec3Title: "4. مشاركة البيانات وخدمات الطرف الثالث",
+                sec3Desc: "نحن لا نبيع بياناتك لأي طرف. نتعامل فقط مع خدمات موثوقة تابعة لشركة Google:",
                 sec3Item1Title: "Google Firebase:",
-                sec3Item1Desc: "تُستخدم خدمات فايربيس للاستضافة، قواعد البيانات (Realtime DB/Firestore)، إنشاء الحسابات والمصادقة (Authentication)، والتحليلات (Analytics).",
-                sec3Item2Title: "Google AdMob (الإعلانات):",
-                sec3Item2Desc: "في النسخة المجانية، نستخدم AdMob لعرض الإعلانات. قد يقوم AdMob باستخدام ملفات تعريف الارتباط (Cookies) أو معرفات الإعلانات لتخصيص الإعلانات وفقاً لاهتماماتك. (ملاحظة: لا يتم عرض أي إعلانات في نسخة الاشتراكات المميزة Premium).",
-                sec3Item3Title: "Google Play Billing (الاشتراكات):",
-                sec3Item3Desc: "تُستخدم لمعالجة عمليات الشراء والاشتراكات داخل التطبيق. نحن لا نعالج أو نخزن بيانات بطاقتك الائتمانية إطلاقاً على خوادمنا.",
-                sec4Title: "4. ملفات تعريف الارتباط (Cookies) والتقنيات المشابهة",
-                sec4Desc: "قد نستخدم نحن أو شركاؤنا (مثل AdMob و Firebase) تقنيات تتبع مشابهة لملفات تعريف الارتباط أو معرفات أجهزة الجوال لجمع معلومات حول تفاعلك مع التطبيق والإعلانات. يمكنك إدارة تفضيلات الإعلانات الخاصة بك من خلال إعدادات جهازك الذكي (مثال: إيقاف تخصيص الإعلانات عبر إعدادات الخصوصية في هاتفك).",
+                sec3Item1Desc: "لإدارة قواعد البيانات السحابية والمصادقة والتحليلات الآمنة.",
+                sec3Item2Title: "Google AdMob:",
+                sec3Item2Desc: "لعرض الإعلانات للمستخدمين في الخطة المجانية. يتم كتم صوت الإعلانات تلقائياً، وتُلغى الإعلانات تماماً لمشتركي باقة Premium.",
+                sec3Item3Title: "Google Play In-App Billing:",
+                sec3Item3Desc: "لمعالجة الاشتراكات وعمليات الشراء بأعلى درجات الأمان المصرفي عبر نظام جوجل دون وصول التطبيق لأي بيانات دفع.",
                 sec5Title: "5. خصوصية الأطفال (COPPA)",
-                sec5Desc: "خدماتنا موجهة للجمهور العام وتطبيقنا لا يجمع عن قصد أي معلومات تعريف شخصية من الأطفال دون سن 13 عاماً. إذا علمنا أن طفلاً دون سن 13 عاماً قد زودنا بمعلومات شخصية قابلة للتحديد، فسنقوم بحذفها من خوادمنا فوراً.",
-                sec6Title: "6. حقوق المستخدم وحذف البيانات",
-                sec6Desc: "بموجب قوانين حماية البيانات (مثل GDPR)، لك الحق في الوصول إلى بياناتك أو تعديلها أو طلب مسحها تماماً. نحتفظ ببياناتك طالما كان حسابك نشطاً لتقديم الخدمات المطلوبة.",
-                sec6Desc2: "لكامل الحق في طلب حذف حسابك، ومسح كافة البيانات وسجلات التسبيح المحفوظة نهائياً من خوادمنا، يرجى استخدام نموذج الحذف المخصص أسفله:",
-                btnDeleteForm: "الانتقال إلى نموذج حذف الحساب",
-                sec7Title: "7. التغييرات على هذه السياسة",
-                sec7Desc: "قد نقوم بتحديث سياسة الخصوصية من وقت لآخر. سنقوم بإعلامك بأي تغييرات جوهرية عن طريق تحديث \"تاريخ آخر تحديث\" أعلى هذه الصفحة، أو عبر إشعار داخل التطبيق.",
-                sec8Title: "8. تواصل معنا",
-                sec8Desc: "إذا كان لديك أي أسئلة، استفسارات، أو طلبات تتعلق بهذه السياسة أو ببياناتك، يرجى التواصل معنا عبر البريد الإلكتروني:",
-                footerHome: "الرئيسية",
+                sec5Desc: "التطبيق موجه للجمهور العام وهو آمن لجميع الأعمار. نحن لا نجمع عن قصد أي بيانات شخصية من الأطفال دون سن 13 عاماً، ومحتوى التطبيق مناسب للجميع.",
+                sec6Title: "6. حذف الحساب والبيانات (Data Deletion Policy)",
+                sec6Desc: "التزاماً بسياسات Google Play وحقك في الخصوصية، يمكنك حذف حسابك وكافة بياناتك وسجلاتك نهائياً في أي وقت:",
+                sec6Desc2: "يمكنك إجراء الحذف مباشرة من داخل التطبيق من خلال: الملف الشخصي > حذف الحساب، أو عبر النموذج الإلكتروني عبر الرابط التالي:",
+                btnDeleteForm: "الانتقال إلى نموذج حذف الحساب وبياناته",
+                sec8Title: "7. تواصل معنا",
+                sec8Desc: "إذا كانت لديك أي استفسارات حول سياسة الخصوصية أو بياناتك، يمكنك مراسلة المطور مباشرة:",
                 footerPrivacy: "سياسة الخصوصية",
                 footerDelete: "طلب حذف الحساب",
                 footerContact: "تواصل معنا",
-                footerSuggestions: "اقتراحاتكم",
-                footerCopy: "جميع الحقوق محفوظة &copy; 2026 تطبيق المسبحة"
+                footerSuggestions: "المقترحات",
+                footerCopy: "جميع الحقوق محفوظة &copy; 2026 تطبيق المسبحة (Misbaha)"
             },
             en: {
-                pageTitle: "Privacy Policy - Almsbha App",
-                appName: "Almsbha",
+                pageTitle: "Privacy Policy - Misbaha App",
+                appName: "Misbaha",
                 headerTitle: "Privacy Policy",
                 headerDesc: "We are committed to protecting your data and privacy with the highest standards of security and transparency.",
-                lastUpdated: "Last Updated: July 28, 2026",
+                metaAppLabel: "App Name:",
+                metaAppName: "Misbaha: Voice Tasbih & Dhikr",
+                metaPackageLabel: "Package ID:",
+                metaDevLabel: "Developer:",
+                metaDevName: "Tariq Aleiman / Mohamed Ibrahim",
+                metaEmailLabel: "Contact Email:",
+                lastUpdated: "Last Updated: August 30, 2026",
                 introTitle: "Introduction:",
-                introDesc: "At the \"Almsbha\" app, we take your privacy very seriously. This policy clearly explains how we collect, use, and protect your information when you use our app and associated services. We comply with global data protection laws including GDPR and COPPA.",
-                sec1Title: "1. Data We Collect",
-                sec1Desc: "To provide the best possible experience, we collect certain data when you use the app:",
-                sec1Item1Title: "Personal Information & Accounts:",
-                sec1Item1Desc: "When signing in with Google or email to create an account, we collect your name, email address, and profile picture. This is necessary for account creation and cloud syncing.",
-                sec1Item2Title: "Usage Data & Databases (Firebase):",
-                sec1Item2Desc: "We store your Dhikr, Tasbih records, and achieved goals using (Firebase Realtime Database / Firestore) to ensure cross-device synchronization and prevent data loss.",
-                sec1Item3Title: "Device Data & Analytics (Firebase Analytics):",
-                sec1Item3Desc: "We collect non-personally identifiable information such as device type, OS version, and usage statistics to improve app performance and troubleshoot issues via Firebase Analytics.",
-                sec2Title: "2. How We Use Your Information?",
-                sec2Desc: "We use the collected information for the following primary purposes:",
-                sec2Item1: "Creating and managing your account and providing core app services.",
-                sec2Item2: "Syncing your Tasbih and Awrad data securely to the cloud.",
-                sec2Item3: "Analyzing app performance to improve the user interface and experience.",
-                sec2Item4: "Communicating with you regarding important updates or customer support.",
-                sec2Item5: "Managing Premium subscriptions, activating associated features, and linking them to your account.",
-                sec3Title: "3. Data Sharing & Third-Party Services",
-                sec3Desc: "We do not sell or rent your personal information. Anonymous or necessary data is only shared with trusted service providers integrated into the app:",
+                introDesc: "This Privacy Policy applies to the \"Misbaha\" mobile application (Package ID: com.M.H.Team.Almsbha.App) developed by \"Tariq Aleiman\". We take your privacy very seriously and explain here with full transparency how your data is collected, processed, and protected, in full compliance with Google Play Developer Policies, GDPR, and COPPA.",
+                sec1Title: "1. Data We Collect and How We Collect It",
+                sec1Desc: "We collect the minimal amount of data necessary to provide and improve app features:",
+                sec1Item1Title: "Account & Authentication Info:",
+                sec1Item1Desc: "When signing in with Google or email, we store your unique user ID, name, and email via Firebase Authentication to create your profile and sync your progress across devices.",
+                sec1Item2Title: "Tasbih & Daily Awrad Records:",
+                sec1Item2Desc: "We store your Tasbih statistics, completed daily Awrad, and custom presets in encrypted cloud databases (Firebase Firestore & Realtime Database) to ensure data safety across devices.",
+                sec1Item3Title: "Diagnostic & Performance Data (Crashlytics & Analytics):",
+                sec1Item3Desc: "We collect non-personally identifiable technical information (device model, OS version, crash logs) to diagnose issues and optimize app performance.",
+                secPermissionsTitle: "2. Sensitive Permissions & Justifications",
+                secPermissionsDesc: "The app requests permissions solely to deliver its core functionality:",
+                permAudioTitle: "Audio Recording Permission (RECORD_AUDIO):",
+                permAudioDesc: "Used exclusively for the \"Voice Tasbih\" feature. Speech is processed 100% locally on your device via the embedded Vosk engine without recording, uploading, or storing audio files (On-Device ephemeral processing only).",
+                permAlarmTitle: "Exact Alarms (SCHEDULE_EXACT_ALARM):",
+                permAlarmDesc: "Used to trigger timely, exact reminders for your scheduled daily Awrad and morning/evening Dhikr.",
+                permFgTitle: "Foreground Services (FOREGROUND_SERVICE_DATA_SYNC):",
+                permFgDesc: "Used to display a visible progress notification while downloading and extracting the offline voice recognition model (Vosk Engine) in the background without interruptions.",
+                permNotifTitle: "Notifications (POST_NOTIFICATIONS):",
+                permNotifDesc: "To deliver reminder alerts and essential service updates. You can manage or disable notifications at any time in system settings.",
+                sec2Title: "3. How We Use Your Information",
+                sec2Desc: "We use the collected information for the following specific purposes only:",
+                sec2Item1: "Account creation and secure login management.",
+                sec2Item2: "Syncing your Dhikr and Tasbih progress across your devices.",
+                sec2Item3: "Managing Premium subscriptions, unlocking premium features, and removing ads.",
+                sec2Item4: "Monitoring app health, resolving bugs, and performance optimization.",
+                sec3Title: "4. Data Sharing & Third-Party Services",
+                sec3Desc: "We do not sell your personal information. We only integrate with trusted Google services:",
                 sec3Item1Title: "Google Firebase:",
-                sec3Item1Desc: "Used for hosting, databases (Realtime DB/Firestore), account creation and authentication (Auth), and analytics.",
-                sec3Item2Title: "Google AdMob (Advertising):",
-                sec3Item2Desc: "In the free version, we use AdMob to display ads. AdMob may use cookies or mobile ad identifiers to personalize ads based on your interests. (Note: Ads are not shown in the Premium subscription version).",
-                sec3Item3Title: "Google Play Billing (Subscriptions):",
-                sec3Item3Desc: "Used to process in-app purchases and subscriptions. We do not process or store your credit card information on our servers.",
-                sec4Title: "4. Cookies & Similar Technologies",
-                sec4Desc: "We or our partners (like AdMob and Firebase) may use tracking technologies similar to cookies or mobile device identifiers to collect information about your interaction with the app and ads. You can manage your ad preferences via your device settings (e.g., opting out of personalized ads via your phone's privacy settings).",
+                sec3Item1Desc: "For cloud databases, authentication, and secure analytics.",
+                sec3Item2Title: "Google AdMob:",
+                sec3Item2Desc: "To serve ads in the free version. Ads are muted by default and completely disabled for Premium subscribers.",
+                sec3Item3Title: "Google Play In-App Billing:",
+                sec3Item3Desc: "To securely process subscription and in-app purchase transactions via Google's secure billing system.",
                 sec5Title: "5. Children's Privacy (COPPA)",
-                sec5Desc: "Our services are intended for a general audience, and we do not knowingly collect personal information from children under 13. If we discover that a child under 13 has provided us with identifiable personal information, we will delete it immediately from our servers.",
-                sec6Title: "6. User Rights & Data Deletion",
-                sec6Desc: "Under data protection laws (e.g., GDPR), you have the right to access, modify, or permanently delete your data. We retain your data as long as your account is active to provide the requested services.",
-                sec6Desc2: "You have the full right to request account deletion and permanently erase all saved data and Tasbih records from our servers. Please use the dedicated deletion form below:",
-                btnDeleteForm: "Go to Account Deletion Form",
-                sec7Title: "7. Changes to This Policy",
-                sec7Desc: "We may update this privacy policy from time to time. We will notify you of any material changes by updating the \"Last Updated\" date at the top of this page, or via an in-app notification.",
-                sec8Title: "8. Contact Us",
-                sec8Desc: "If you have any questions, concerns, or requests regarding this policy or your data, please contact us via email:",
-                footerHome: "Home",
+                sec5Desc: "Our app is designed for a general audience and is family-friendly. We do not knowingly collect personal information from children under 13.",
+                sec6Title: "6. Account and Data Deletion Policy",
+                sec6Desc: "In accordance with Google Play policies and your privacy rights, you can permanently delete your account and all associated data at any time:",
+                sec6Desc2: "You can delete your account directly from within the app via: Profile > Delete Account, or through our web deletion request form:",
+                btnDeleteForm: "Open Web Account Deletion Form",
+                sec8Title: "7. Contact Us",
+                sec8Desc: "If you have any questions or requests regarding this Privacy Policy or your data, please contact the developer directly:",
                 footerPrivacy: "Privacy Policy",
                 footerDelete: "Request Account Deletion",
                 footerContact: "Contact Us",
                 footerSuggestions: "Suggestions",
-                footerCopy: "All rights reserved &copy; 2026 Almsbha App"
+                footerCopy: "All rights reserved &copy; 2026 Misbaha App"
             }
         };
 
         let currentLang = 'ar';
         let currentTheme = 'light';
 
-        // Initialize
         function init() {
-            // Detect System Language
             const sysLang = navigator.language.slice(0, 2);
             if (sysLang === 'ar' || sysLang === 'en') {
                 currentLang = sysLang;
             } else {
-                currentLang = 'en'; // fallback for non-arabic/non-english
+                currentLang = 'ar';
             }
             
-            // Detect System Theme
             if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
                 currentTheme = 'dark';
             }
 
-            // Load saved preferences if any (overrides system)
             const savedLang = localStorage.getItem('almsbha_lang');
             if (savedLang) currentLang = savedLang;
             
@@ -518,7 +581,6 @@
             applyLanguage(currentLang);
             applyTheme(currentTheme);
 
-            // Listeners
             document.getElementById('langToggle').addEventListener('click', () => {
                 currentLang = currentLang === 'ar' ? 'en' : 'ar';
                 localStorage.setItem('almsbha_lang', currentLang);
@@ -538,7 +600,7 @@
             
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
-                if (translations[lang][key]) {
+                if (translations[lang] && translations[lang][key]) {
                     if (el.tagName === 'TITLE') {
                         document.title = translations[lang][key];
                     } else if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
@@ -549,7 +611,6 @@
                 }
             });
 
-            // Adjust font icon for language button
             const langBtn = document.getElementById('langToggle');
             langBtn.innerHTML = lang === 'ar' ? '<span style="font-size: 1rem; font-weight: bold;">EN</span>' : '<span style="font-size: 1rem; font-weight: bold;">ع</span>';
         }
@@ -560,7 +621,6 @@
             themeBtn.innerHTML = theme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
         }
 
-        // Run init
         document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
